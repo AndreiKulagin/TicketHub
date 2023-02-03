@@ -1,0 +1,24 @@
+ID
+      Priority 
+                  Requirement 
+                                    App Module
+                                                                         Test steps
+                                                                                                                                                                        Expected result
+1.1
+         5
+                    Task1
+                                    Companies
+                                                               Companies. Creating a new company.
+                                                           Log in to the website (http://176.36.27.131:8180)
+                                                                Using following login and password:
+                                                                login: thadmin
+                                                                password: tickethub
+                                                       1)On the left bar chose the button companies and press it .
+                                                       2)Press the green button "NEW COMPANY
+                                                       3)Fill the fields "Company name" following value: Argos
+                                                   4)Choose 0 level in the Extend Service Program and press button "submit'.
+                                                                                                                                          1)Window ''Companies'' is open and the button companies on the  left-side bar indicated by orange color.
+                                                                                                                                          2)Window creating a new company is opened, you can see company name string and tickets prefix.
+                                                                                                                                          3)The filed should be indicated by green color, the field "Tickets prefix" should be filled in automatically with          
+                                                                                                                                           the same name "Argos".                                                                                                                                                                     
+                                                                                                                                          4)The company should be created and seen in the companies window
