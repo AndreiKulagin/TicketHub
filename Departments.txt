@@ -1,0 +1,26 @@
+ID
+          Priority
+                        Requirement 
+                                         App Module
+                                                                                                                                 Test steps
+                                                                                                                                                                                                  Expected result
+1.3
+             5
+                          Task1
+                                         Department
+                                                                                                                    Departments. Creating a new department.
+                                                                                                                Log in to the website (http://176.36.27.131:8180)
+                                                                                                                    Using following login and password:
+                                                                                                                    login: thadmin
+                                                                                                                    password: tickethub
+                                                                                                                 1)On the left bar chose the button departments and press it .
+                                                                                                                 2)Press the green button "NEW DEPARTMENT
+                                                                                                                 3)Fill the field Title with value - NEW DEPARTMENT
+                                                                                                                 4)Press the  button "submit'.
+                                                                                                                                                                                        1)Window ''Departments'' is open and the button departments
+                                                                                                                                                                                        on the  left-side bar indicated by orange color.
+                                                                                                                                                                                        2)Window creating a new department 
+                                                                                                                                                                                        is opened, you can see title field.
+                                                                                                                                                                                        3)The filed title should be indicated by green color. 
+                                                                                                                                                                                        4)The department should be created 
+                                                                                                                                                                                        and seen in the departments window
