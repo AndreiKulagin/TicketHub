@@ -1,0 +1,20 @@
+ID.             Priority.            Requirement                  App Module.                                            Test steps                                                            Expected result
+1.7.                5                   Task1                      Contacts                                                                                                                   
+
+                  
+
+                                                                                                      Contacts. Negative test.Using the wrong data.
+                                                                                                     Log in to the website (http://176.36.27.131:8180)
+                                                                                                            Using following login and password:
+                                                                                                            login: thadmin
+                                                                                                            password: tickethub
+                                                                                                1)On the left bar chose the button contacts and press it .
+                                                                                                2)Press the green button "NEW CONTACT
+                                                                                                  3)Fill the field Email with the wrong data - kullagin@!.
+
+                                                                                                                                                                                    1)Window ''Contacts'' is open and the button managers
+                                                                                                                                                                                    on the  left-side bar indicated by orange color.
+                                                                                                                                                                                    2)Window creating a new contact is opened, you 
+                                                                                                                                                                                    can see First name, email fields.
+                                                                                                                                                                                    3)The filed Email will be indicated by red color and 
+                                                                                                                                                                                    there will be a warning below "Email must be valid.
