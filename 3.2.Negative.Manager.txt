@@ -1,0 +1,36 @@
+ID - 1.6
+
+Priority - 5
+
+Requirement - Task1
+
+App Module - Managers
+
+
+Test steps:
+
+Managers. Negative test.Using the wrong data. 
+Log in to the website (http://176.36.27.131:8180). Using following login and password: login: thadmin , password: tickethub. 
+                                                 
+1)On the left bar chose the button managers and press it .    
+2)Press the green button "NEW DEPARTMENT
+3)Fill the field First name with one symbol - A.
+
+
+Expected result:
+
+1)Window ''Managers'' is open and the button manager on the  left-side bar indicated by orange color.
+2)Window creating a new manager is opened, you can see title field. 
+3)The filed First name will be indicated by red color and there will be a warning below "First name must be at least 2 characters long.
+
+
+
+                  
+
+
+
+
+
+
+
+ 
