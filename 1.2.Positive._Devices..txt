@@ -1,0 +1,29 @@
+ID - 1.2
+
+Priority - 5
+
+Requirement - Task1
+
+App Module - Device
+
+
+Test steps:
+
+Devices. Creating a new device.
+Log in to the website (http://176.36.27.131:8180). Using following login and password: login: thadmin password: tickethub
+                                                                                                                                                                                          
+1)On the left bar chose the button devices and press it .
+2)Press the green button "NEW DEVICE
+3)Fill the fields Title with value - new device, ip - 123456, port -654, password - 003355, company-without company, Contact -Hello Man.
+4)Tick '' Send notification and create ticket if device failure:'' and press button "submit'.
+
+
+Expected result:
+
+1)Window ''Devices'' is open and the button devices on the  left-side bar indicated by orange color.
+2)Window creating a new device is opened, you can see title, ip, port fields.
+3)The fields should be indicated by green color. 
+4)The device should be created and seen in the devices window.
+
+
+ 
