@@ -1,0 +1,151 @@
+ID - 1.1
+
+Project - Bigom
+
+App Module - Companies
+
+Test Description - Creating a new company.
+
+Expected result - The company should be created and seen in the companies window.
+
+Priority - 5
+
+Date of testing - 03.02.2023
+
+Executor - Andrei Kulagin
+
+Testing Environment - Safari Version 16.1 (18614.2.9.1.12).
+
+Status ("not tested", "tested successfully) - tested successfully.
+
+
+ID - 1.2
+
+Project - Bigom
+
+App Module - Devices
+
+Test Description - Creating a new device.
+
+Expected result - The device should be created and seen in the devices window.
+
+Priority - 5
+
+Date of testing - 03.02.2023
+
+Executor - Andrei Kulagin
+
+Testing Environment - Safari Version 16.1 (18614.2.9.1.12).
+
+Status ("not tested", "tested successfully) - tested successfully.
+
+
+ID - 1.3
+
+Project - Bigom
+
+App Module - Departments
+
+Test Description - Creating a new department.
+
+Expected result - The department should be created and seen in the departments window.
+
+Priority - 5
+
+Date of testing - 03.02.2023
+
+Executor - Andrei Kulagin
+
+Testing Environment - Safari Version 16.1 (18614.2.9.1.12).
+
+Status ("not tested", "tested successfully) - tested successfully.
+
+
+ID - 1.4
+
+Project - Bigom
+
+App Module - Managers 
+
+Test Description - Creating a new manager.
+
+Expected result - The manager "Andrei Kulagin" should be created and seen in the managers window.
+
+Priority - 5
+
+Date of testing - 03.02.2023
+
+Executor - Andrei Kulagin
+
+Testing Environment - Safari Version 16.1 (18614.2.9.1.12).
+
+Status ("not tested", "tested successfully) - tested successfully.
+
+
+ID - 1.5
+
+Project - Bigom
+
+App Module - Login 
+
+Test Description - Login using the wrong data. Negative test for login.
+
+Expected result - You will see an error window with a message "You entered the wrong login or password. Please try again".
+
+Priority - 5
+
+Date of testing - 03.02.2023
+
+Executor - Andrei Kulagin
+
+Testing Environment - Safari Version 16.1 (18614.2.9.1.12).
+
+Status ("not tested", "tested successfully) - tested successfully.
+
+
+ID - 1.6
+
+Project - Bigom
+
+App Module - Managers 
+
+Test Description - Creating a new manager using the wrong data. Negative test..
+
+Expected result - The filed First name will be indicated by red color and there will be a warning below "First name must be at least 2 characters long..
+
+Priority - 5
+
+Date of testing - 03.02.2023
+
+Executor - Andrei Kulagin
+
+Testing Environment - Safari Version 16.1 (18614.2.9.1.12).
+
+Status ("not tested", "tested successfully) - tested successfully.
+
+
+
+ID - 1.7
+
+Project - Bigom
+
+App Module - Contact 
+
+Test Description - Creating a new contact using the wrong data. Negative test.
+
+Expected result - The filed Email will be indicated by red color and there will be a warning below "Email must be valid.
+
+Priority - 5
+
+Date of testing - 03.02.2023
+
+Executor - Andrei Kulagin
+
+Testing Environment - Safari Version 16.1 (18614.2.9.1.12).
+
+Status ("not tested", "tested successfully) - tested successfully.
+
+
+
+
+
