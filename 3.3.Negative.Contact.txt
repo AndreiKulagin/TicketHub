@@ -2,7 +2,7 @@ ID - 1.7
 
 Priority - 5
 
-Requirement - Task1
+Requirement - Task1 (https://lms.foxminded.ua/mod/assign/view.php?id=755).
 
 App Module - Contacts
 
@@ -10,7 +10,7 @@ App Module - Contacts
 Test steps:
 
 Contacts. Negative test.Using the wrong data.
-Log in to the website (http://176.36.27.131:8180). Using following login and password: login: thadmin , password: tickethub.
+Log in to the website.
 
 1)On the left bar chose the button contacts and press it .
 2)Press the green button "NEW CONTACT".
@@ -19,7 +19,6 @@ Log in to the website (http://176.36.27.131:8180). Using following login and pas
 
 Expected result:
 
-1)Window ''Contacts'' is open and the button managers on the  left-side bar indicated by orange color.
-2)Window "creating a new contact" is opened, you can see First name, email fields.
+1)Contacts section is open and the button managers on the left-side bar indicated by orange color.
+2)section "creating a new contact" is opened, you can see First name, email fields.
 3)The filed Email will be indicated by red color and there will be a warning below "Email must be valid.
-

@@ -2,7 +2,7 @@ ID - 1.4
 
 Priority - 5
 
-Requirement - Task1
+Requirement - Task1 (https://lms.foxminded.ua/mod/assign/view.php?id=755).
 
 App Module - Managers.
 
@@ -10,19 +10,71 @@ App Module - Managers.
 Test steps:
 
 Managers. Creating a new manager.
-Log in to the website (http://176.36.27.131:8180). Using following login and password: login: thadmin,  password: tickethub.
+Log in to the website.
 
 1)On the left bar chose the button managers and press it .
-2)Press the green button "NEW DEPARTMENT.
-3)Fill the field First name with value -Andrei.Last name - Kulagin, Email - kullagin97@gmail.com.  In the field Department choose "Managers'.
-4)Don't tick the box "Admin" .Press the  button "submit'.
+2)Press the green button "NEW DEPARTMENT".
+3)Fill the fields with randomly generated values. In the field Department choose "Managers'.
+4)Don't tick the box "Admin" .Press the  button "submit".
 
 
 Expected result:
 
-1)Window ''Managers'' is open and the button managers on the left-side bar indicated by orange color.
-2)Window creating a new manager is opened, you can see title  field.
+1)Managers section  is open and the button managers on the left-side bar indicated by orange color.
+2)Section creating a new manager is opened, you can see title field.
 3)The fields should be indicated by green color.The field login should be filled in automatically with same value as email. 
-4)The manager "Andrei Kulagin" should be created and seen in the managers window.
+4)The manager should be created and seen in the managers section.
 
 
+Managers. Add manager with admin option.
+Log in to the website.
+
+1)On the left bar chose the button managers and press it .
+2)Press the green button "NEW DEPARTMENT".
+3)Fill the field First name with randomly generated value -  In the field Department choose "Managers'.
+4)Tick the box "Admin" .Press the  button "submit".
+
+
+Expected result:
+
+1)Managers section  is open and the button managers on the left-side bar indicated by orange color.
+2)Section creating a new manager is opened, you can see title field.
+3)The fields should be indicated by green color.The field login should be filled in automatically with same value as email.
+4)The manager should be created and seen in the managers section with the information Department , Phone and Email.
+
+
+
+Managers. Find and Edit existing manager.
+Log in to the website.
+
+1)On the left bar chose the button managers and press it .
+2)In the field First name and Last name type the name and last name of the Manager and press the button filter.
+3)Press Edit button on the right side.
+4)Change the first name field to the randomized value generated.(First name must be at least 2 characters long).
+And press submit.
+5)Type changed name of the manager in the filter field.
+
+Expected result:
+
+1)Managers section  is open and the button managers on the left-side bar indicated by orange color.
+2)You will see this manager in the Manager section.
+3)Edit manager section is open.
+4)The edit manager section should disappear.
+5)You will see the changed name of the manager in the manager section.
+
+
+
+Managers. Find and Delete existing manager.
+Log in to the website.
+
+1)On the left bar chose the button managers and press it .
+2)In the field First name and Last name type the name and last name of the Manager and press the button filter.
+3)Press Delete button on the right side.
+4)On the message "Are you confirm delete?" choose OK
+
+Expected result:
+
+1)Managers section  is open and the button managers on the left-side bar indicated by orange color.
+2)You will see this manager in the Manager section.
+3)You will see a message "Are you confirm delete?".
+4)The manager should disappear in the manager section.

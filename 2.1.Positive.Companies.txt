@@ -2,7 +2,7 @@ ID - 1.1
 
 Priority - 5
 
-Requirement - Task 1
+Requirement - Task1 (https://lms.foxminded.ua/mod/assign/view.php?id=755).
 
 App Module - Companies
 
@@ -10,18 +10,17 @@ App Module - Companies
 Test steps:
   
 Companies. Creating a new company.   
-Log in to the website (http://176.36.27.131:8180).  Using following login and password login: thadmin.  password: tickethub
+Log in to the website.
 
-1)On the left bar chose the button companies and press it .
-2)Press the green button "NEW COMPANY
-3)Fill the fields "Company name" following value: Argos
-4)Choose 0 level in the Extend Service Program and press button "submit'.
+1)On the left bar choose the button companies and press it .
+2)Press the green button "NEW COMPANY".
+3)Fill the fields "Company name" use the name generated randomly.(Company name must be at least 3 characters long.
+4)Choose 0 level in the Extend Service Program and press button "submit".
 
 
 Expected result:
 
-1)Window ''Companies'' is open and the button companies on the  left-side bar indicated by orange color.
-2)Window creating a new company is opened, you can see company name string and tickets prefix.
-3)The filed should be indicated by green color, the field "Tickets prefix" should be filled in automatically with the same name "Argos". 
-4)The company should be created and seen in the companies window.
-
+1)Companies section is open and the button companies on the left-side bar indicated by orange color.
+2)Section creating a new company is opened, you can see company name string and tickets prefix.
+3)The filed should be indicated by green color, the field "Tickets prefix" should be filled in automatically with the same name as the company name.
+4)The company should be created and seen in the companies section.
