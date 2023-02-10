@@ -14,7 +14,7 @@ Log in to the website.
 
 1)On the left bar chose the button departments and press it .
 2)Press the green button "NEW DEPARTMENT".
-3)Fill the field Title with value - NEW DEPARTMENT.
+3)Fill the field Title.
 4)Press the  button "submit".
 
 

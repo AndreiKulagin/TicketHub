@@ -28,5 +28,3 @@ Test data:
 
 -Test data for Test case 3:
   Email: kullagin@!
-
-

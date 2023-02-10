@@ -3,9 +3,9 @@
 3.Testing Environment - Safari Version 16.1 (18614.2.9.1.12).
 4.Credentials:
 
-Site URL:http://176.36.27.131:8180
-Login: thadmin
-Password: tickethub
+  Site URL:http://176.36.27.131:8180
+  Login: thadmin
+  Password: tickethub
 
 5.Test cases:
 
@@ -34,3 +34,24 @@ Test case 11: Add manager with admin option.
 Test case 12: Find and edit existing manager.
 
 Test case 13: Find and delete existing manager.
+
+Test data:
+
+- Test data for Test case 2:
+  Title: new device
+  ip: 123456
+  port: 654
+  password: 003355
+  company-without company
+  Contact: Hello Man
+
+-Test data for Test case 3:
+  Title: new device
+  ip: 123456
+  port: 654
+  password: 003355
+  company-without company
+  Contact: Hello Man
+
+-Test data for Test case 6:
+  Title: NEW DEPARTMENT

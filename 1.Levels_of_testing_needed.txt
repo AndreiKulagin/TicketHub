@@ -9,5 +9,5 @@
 4.Acceptance - checking the system for compliance with business goals.
 
 For the Task1 we need to use System testing. In this task we do functional testing ,
-we check if a login feature responds when the user enters a password.Also we check 
+we check if a login feature responds when the user enters a password. Also we check
 the main functions of the website as creating a new company, department etc.

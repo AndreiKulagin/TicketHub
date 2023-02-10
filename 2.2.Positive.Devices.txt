@@ -14,7 +14,7 @@ Log in to the website.
                                                                                                                                                                                           
 1)On the left bar choose the button devices and press it .
 2)Press the green button "NEW DEVICE".
-3)Fill the fields Title with value - new device, ip - 123456, port -654, password - 003355, company-without company, Contact -Hello Man.
+3)Fill the fields.
 4)Tick "Send notification" and create ticket if device failure: and press button "submit".
 
 
@@ -32,7 +32,7 @@ Log in to the website.
 
 1)On the left bar choose the button devices and press it .
 2)Press the green button "NEW DEVICE".
-3)Fill the fields Title with value - new device, ip - 123456, port -654, password - 003355, company-without company, Contact -Hello Man.
+3)Fill the fields.
 4)Don't select "Send notification" and create ticket if device failure: and press button "submit".
 
 
@@ -65,13 +65,13 @@ Devices. Find and delete existing device.
 Log in to the website.
 
 1)On the left bar choose the button devices and press it .
-2)In the field SEARCH type the name of device - "NEW DEVICE" and press enter.
-3)Press the red icon Delete on the right side of the field "NEW DEVICE".
+2)In the field SEARCH type the name of device - "new device" and press enter.
+3)Press the red icon Delete on the right side of the field "new device".
 4)In the message "Are you confirm delete?" select "OK".
 
 Expected result:
 
 1)Devices section is open and the button devices on the left-side bar indicated by orange color.
-2)In section devices you will see device with the name "NEW DEVICE".
+2)In section devices you will see device with the name "new device".
 3)You will see a message "Are you confirm delete "?
 4)The device should disappear from device section.
