@@ -1,0 +1,77 @@
+ID - 1.2
+
+Priority - 5
+
+Requirement - Task1 (https://lms.foxminded.ua/mod/assign/view.php?id=755).
+
+App Module - Device
+
+
+Test steps:
+
+Devices. Creating a new device.
+Log in to the website.
+                                                                                                                                                                                          
+1)On the left bar choose the button devices and press it .
+2)Press the green button "NEW DEVICE".
+3)Fill the fields.
+4)Tick "Send notification" and create ticket if device failure: and press button "submit".
+
+
+Expected result:
+
+1)Devices section is open and the button devices on the left-side bar indicated by orange color.
+2)Section creating a new device is opened, you can see title, ip, port fields.
+3)The fields should be indicated by green color. 
+4)The device should be created and seen in the devices section.
+
+
+
+Devices. Add a new device with deselected checkbox "Send notification and create ticket if device failure:".
+Log in to the website.
+
+1)On the left bar choose the button devices and press it .
+2)Press the green button "NEW DEVICE".
+3)Fill the fields.
+4)Don't select "Send notification" and create ticket if device failure: and press button "submit".
+
+
+Expected result:
+
+1)Devices section is open and the button devices on the left-side bar indicated by orange color.
+2)Section creating a new device is opened, you can see title, ip, port fields.
+3)The fields should be indicated by green color.
+4)The device should be created and seen in the devices section.
+
+
+Devices. Find and edit existing device.
+Log in to the website.
+
+1)On the left bar choose the button devices and press it .
+2)In the field SEARCH type the name of device - "NEW DEVICE" and press enter.
+3)Press the yellow icon Edit on the right side of the field "NEW DEVICE".
+4)Edit the title on this device on the name generated randomly.(Title must be at least 4 characters long).
+And press submit.
+
+Expected result:
+
+1)Devices section is open and the button devices on the left-side bar indicated by orange color.
+2)In section devices you will see device with the name "NEW DEVICE".
+3)Section "Edit the device" is open. You will see a note : " While you are editing the form, others cannot do this".
+4)The name of device should be changed and seen in the Device section.
+
+
+Devices. Find and delete existing device.
+Log in to the website.
+
+1)On the left bar choose the button devices and press it .
+2)In the field SEARCH type the name of device - "new device" and press enter.
+3)Press the red icon Delete on the right side of the field "new device".
+4)In the message "Are you confirm delete?" select "OK".
+
+Expected result:
+
+1)Devices section is open and the button devices on the left-side bar indicated by orange color.
+2)In section devices you will see device with the name "new device".
+3)You will see a message "Are you confirm delete "?
+4)The device should disappear from device section.

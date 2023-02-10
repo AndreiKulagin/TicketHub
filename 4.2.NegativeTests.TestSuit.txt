@@ -1,0 +1,30 @@
+1.Negative test cases Test Suit.
+2.To verify that the functions of the website work as expected using the negative tests.
+3.Testing Environment - Safari Version 16.1 (18614.2.9.1.12).
+4.Credentials:
+
+  Site URL:http://176.36.27.131:8180
+  Login: thadmin
+  Password: tickethub
+
+5.Test cases:
+
+Test case 1: Log in using the wrong data.
+
+Test case 2: Create a new manager using the wrong data.
+
+Test case 3: Create a new contact using the wrong data.
+
+
+Test data:
+
+- Test data for Test case 1:
+  Website URL: http://176.36.27.131:8180
+  Login: 12345
+  Password: 12345
+
+- Test data for Test case 2:
+  First name: A
+
+-Test data for Test case 3:
+  Email: kullagin@!

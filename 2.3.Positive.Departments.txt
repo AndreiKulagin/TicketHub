@@ -1,0 +1,86 @@
+ID - 1.3
+
+Priority - 5
+
+Requirement - Task1 (https://lms.foxminded.ua/mod/assign/view.php?id=755).
+
+App Module - Department.
+
+
+Test steps:
+
+Departments. Creating a new department.
+Log in to the website.
+
+1)On the left bar chose the button departments and press it .
+2)Press the green button "NEW DEPARTMENT".
+3)Fill the field Title.
+4)Press the  button "submit".
+
+
+Expected result:
+
+1)Departments section is open and the button departments on the left-side bar indicated by orange color.
+2)Section creating a new department is opened, you can see title field.
+3)The filed title should be indicated by green color. 
+4)The department should be created and seen in the departments section.
+
+
+
+Departments. Add department with filling "Additional information" section.
+Log in to the website.
+
+1)On the left bar chose the button departments and press it .
+2)Press the green button "NEW DEPARTMENT".
+3)Fill the field Title with randomly generated value (Title must be at least 3 characters long).
+4)Press Additional information section and fill all fields by randomly generated values.(email address
+should contain valid value like kullagin97@gmail.com)
+5)Press button submit.
+
+
+
+Expected result:
+
+1)Departments section is open and the button departments on the left-side bar indicated by orange color.
+2)Section creating a new department is opened, you can see title field.
+3)The filed title should be indicated by green color.
+4)Fields should not contain error messages.
+5)The department should be created and seen in the departments section with phone and email information.
+
+
+
+Departments. Find and edit existing department.
+Log in to the website.
+
+1)On the left bar chose the button departments and press it .
+2)In the field Title type the name of the department and press filter button.
+3)Choose this department by pressing on its title.
+4)Press the button edit.
+5)Change the title by randomly generated value (Title must be at least 3 characters long).
+And press submit button.
+
+
+Expected result:
+
+1)Departments section is open and the button departments on the left-side bar indicated by orange color.
+2)This department should be seen in the department section.
+3)The information of this department is open.
+4)Section of department information is open.
+5)The departments section is open with a changed name.
+
+
+
+Departments. Find and delete existing department.
+Log in to the website.
+
+1)On the left bar chose the button departments and press it .
+2)In the field Title type the name of the department and press filter button.
+3)Press the red delete button on the right side.
+4)On the message "Are you confirm delete?" choose OK.
+
+Expected result:
+
+1)Departments section is open and the button departments on the left-side bar indicated by orange color.
+2)This department should be seen in the department section.
+3)You will see a message "Are you confirm delete?".
+4)The department should disappear.
