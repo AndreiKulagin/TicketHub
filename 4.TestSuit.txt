@@ -1,2 +1,0 @@
-1.Companies feature Test Suit.
-2.To verify that the compani

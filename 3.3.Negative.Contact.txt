@@ -14,7 +14,7 @@ Log in to the website.
 
 1)On the left bar chose the button contacts and press it .
 2)Press the green button "NEW CONTACT".
-3)Fill the field Email with the wrong data - kullagin@!.
+3)Fill the field Email with the wrong data.
 
 
 Expected result:

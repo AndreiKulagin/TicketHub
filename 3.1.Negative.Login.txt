@@ -11,8 +11,8 @@ Test steps:
 
 Login. Negative test for login.
 
-1)Go to the website (http://176.36.27.131:8180).
-2)Enter the wrong data: Login - 12345, Password - 12345. And press SIGN IN.
+1)Go to the website.
+2)Enter the wrong data. And press SIGN IN.
 
 
 Expected result:

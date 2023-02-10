@@ -13,7 +13,7 @@ Managers. Negative test.Using the wrong data.
 Log in to the website.
                                                  
 1)On the left bar chose the button managers and press it .    
-2)Press the green button "NEW DEPARTMENT".
+2)Press the green button "NEW MANAGER".
 3)Fill the field First name with one symbol - A.
 
 
