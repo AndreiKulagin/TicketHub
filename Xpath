@@ -1,4 +1,4 @@
-1. Menu:
+1.Menu:
 
 Dashboard:
 Xpath://a[@id="menu-dashboard"]
@@ -33,7 +33,7 @@ Xpath://a[@id="menu-categories"]
 Id = "menu-categories"
 
 
-2. Pages:
+2.Pages:
 
 Tickets:
 Xpath://*[@id="body"]/app-root/ticketshub-application/div[2]/div[3]/tickets
