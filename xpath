@@ -36,17 +36,15 @@ Id = "menu-categories"
 2.Pages:
 
 Tickets:
-Xpath://*[@id="body"]/app-root/ticketshub-application/div[2]/div[3]/tickets
-Id = "body"
+Xpath://tickets
 
 Contacts->New contact:
-Xpath://*[@id="body"]/app-root/ticketshub-application/div[2]/div[3]/contact-form
-Id = "body"
+Xpath://*[@id="new-contact"]
+Id = "new-contact"
 
 Departments->New department:
-Xpath://*[@id="body"]/app-root/ticketshub-application/div[2]/div[3]/department-form
-Id = "body"
+Xpath://*[@id="new-department"]
+Id = "new-department"
 
 Categories:
-Xpath://*[@id="body"]/app-root/ticketshub-application/div[2]/div[3]/categories
-Id = "body"
+Xpath://categories
