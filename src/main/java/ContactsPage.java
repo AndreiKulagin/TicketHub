@@ -8,7 +8,7 @@ public class ContactsPage{
     @FindBy(id = "menu-contacts")
     private WebElement contactsMenu;
     @FindBy(xpath = "//button[@id='new-contact']")
-    private WebElement newContact;
+    private WebElement newContactButton;
 
     public ContactsPage(WebDriver driver){
         this.driver = driver;

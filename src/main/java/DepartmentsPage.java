@@ -7,8 +7,8 @@ public class DepartmentsPage{
 
     @FindBy(id = "menu-departments")
     private WebElement departmentsMenu;
-    @FindBy(xpath = "//*[@id='new-department']")
-    private WebElement newDepartment;
+    @FindBy(id = "new-department")
+    private WebElement newDepartmentButton;
 
     public DepartmentsPage(WebDriver driver){
         this.driver = driver;
