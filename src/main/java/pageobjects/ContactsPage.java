@@ -1,14 +1,18 @@
+package pageobjects;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-public class CategoriesPage{
+public class ContactsPage{
     private WebDriver driver;
 
-    @FindBy(id = "menu-categories")
-    private WebElement categoriesMenu;
+    @FindBy(id = "menu-contacts")
+    private WebElement contactsMenu;
+    @FindBy(xpath = "//button[@id='new-contact']")
+    private WebElement newContactButton;
 
-    public CategoriesPage(WebDriver driver){
+    public ContactsPage(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver,this);
     }
