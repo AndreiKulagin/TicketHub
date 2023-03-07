@@ -37,7 +37,7 @@ public class LoginTestChrome {
         driver.get(url);
 
         String expectedUrl = "http://176.36.27.131:8180/#/login";
-        String actualUrl = driver.getCurrentUrl();
+          String actualUrl = driver.getCurrentUrl();
         assertEquals(expectedUrl, actualUrl);
     }
 
