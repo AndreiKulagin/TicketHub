@@ -41,6 +41,7 @@ Xpath://tickets
 Contacts->New contact:
 Xpath://button[@id="new-contact"]
 Id = "new-contact"
+CSS = "button#new-contact"
 
 Departments->New department:
 Xpath://*[@id="new-department"]
