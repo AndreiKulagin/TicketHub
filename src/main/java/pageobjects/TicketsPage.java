@@ -19,15 +19,13 @@ public class TicketsPage {
     public WebElement idHeader;
 
 
-    @FindBy(xpath = "//*[@id='body']/app-root/ticketshub-application/div[2]/div[3]/tickets/div/div/div/div/table/tbody/tr[1]/th[3]")
+    @FindBy(xpath = "//th[contains(text(),'Title')]")
     public WebElement titleHeader;
 
-    @FindBy(xpath = "//*[@id='body']/app-root/ticketshub-application/div[2]/div[3]/tickets/div/div/div/div/table" +
-                    "/tbody/tr[1]/th[6]")
+    @FindBy(xpath = "//th[contains(text(),'Assignee')]")
     public WebElement assigneeHeader;
 
-    @FindBy(xpath = "//*[@id='body']/app-root/ticketshub-application/div[2]/div[3]/tickets/div/div/div/div/table" +
-                    "/tbody/tr[1]/th[7]")
+    @FindBy(xpath = "//th[contains(text(),'Stage')]")
     public WebElement stageHeader;
 
     public TicketsPage(WebDriver driver){
