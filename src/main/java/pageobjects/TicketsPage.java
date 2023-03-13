@@ -15,7 +15,7 @@ public class TicketsPage {
     @FindBy(id = "menu-tickets")
     private WebElement ticketsMenu;
 
-    @FindBy(xpath = "//*[@id='body']/app-root/ticketshub-application/div[2]/div[3]/tickets/div/div/div/div/table/tbody/tr[1]/th[2]")
+    @FindBy(xpath = "//th[contains(text(),'Id')]")
     public WebElement idHeader;
 
 
