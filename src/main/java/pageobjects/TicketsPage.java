@@ -35,24 +35,21 @@ public class TicketsPage {
 
     public void getAllIds(){
         List<String> ids = new ArrayList<>();
-        List<WebElement> idElements = idHeader.findElements(By.xpath("//td[@width='80px']//span"));
+        List<WebElement> idElements = idHeader.findElements(By.xpath("//td[@width='80px']//span/span"));
 
         for(WebElement idElement : idElements){
-            String id = idElement.getText();
-            if(!ids.contains(id)){
-                ids.add(id);
+            ids.add(idElement.getText());
             }
-        }
         System.out.println(ids);
     }
 
     public void getAllTitles(){
         List<String> titles = new ArrayList<>();
-        List<WebElement> titlesElements = titleHeader.findElements(By.cssSelector("ticket-title-id locked-link"));
+        List<WebElement> titlesElements = titleHeader.findElements(By.xpath("//a[@class='ticket-title-id locked-link']//span"));
         for(WebElement titlesElement : titlesElements){
             titles.add(titlesElement.getText());
-            System.out.println(titles);
         }
+        System.out.println(titles);
     }
 
     public void getAllAssignees(){
