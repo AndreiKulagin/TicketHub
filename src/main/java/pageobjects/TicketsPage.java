@@ -37,7 +37,8 @@ public class TicketsPage {
 
     public void getAllIds(){
         List<String> ids = new ArrayList<>();
-        List<WebElement> idElements = idHeader.findElements(By.cssSelector("ticket-title-id locked-link"));
+        List<WebElement> idElements = idHeader.findElements(By.cssSelector("//*[@id='body']/app-root" +
+                "/ticketshub-application/div[2]/div[3]/tickets/div/div/div/div/table/tbody/tr/td[2]/span/span"));
 
         for(WebElement idElement : idElements){
             ids.add(idElement.getText());
@@ -47,8 +48,7 @@ public class TicketsPage {
 
     public void getAllTitles(){
         List<String> titles = new ArrayList<>();
-        List<WebElement> titlesElements = titleHeader.findElements(By.xpath("//*[@id='body']/app-root/" +
-                        "ticketshub-application/div[2]/div[3]/tickets/div/div/div/div/table/tbody/tr[2]/td[3]/a/span"));
+        List<WebElement> titlesElements = titleHeader.findElements(By.xpath("ticket-title-id locked-link"));
         for(WebElement titlesElement : titlesElements){
             titles.add(titlesElement.getText());
             System.out.println(titles);
@@ -58,7 +58,7 @@ public class TicketsPage {
     public void getAllAssignees(){
         List<String> assignees = new ArrayList<>();
         List<WebElement>assigneesElements = assigneeHeader.findElements(By.xpath("//*[@id='body']/app-root" +
-                "/ticketshub-application/div[2]/div[3]/tickets/div/div/div/div/table/tbody/tr[6]/td[6]/tbody/tr[2]/span"));
+                "/ticketshub-application/div[2]/div[3]/tickets/div/div/div/div/table/tbody/tr/td[6]/tbody/tr[2]/span"));
         for(WebElement assigneesElement : assigneesElements){
             assignees.add(assigneesElement.getText());
             System.out.println(assignees);
@@ -67,8 +67,8 @@ public class TicketsPage {
 
     public void getAllStages(){
         List<String> stages = new ArrayList<>();
-        List<WebElement>stagesElements = stageHeader.findElements(By.xpath("//*[@id='body']/app-root/" +
-                          "ticketshub-application/div[2]/div[3]/tickets/div/div/div/div/table/tbody/tr[2]/td[7]/span"));
+        List<WebElement>stagesElements = stageHeader.findElements(By.xpath("//*[@id='body']/app-root" +
+                "/ticketshub-application/div[2]/div[3]/tickets/div/div/div/div/table/tbody/tr/td[7]/span"));
         for(WebElement stagesElement : stagesElements){
             stages.add(stagesElement.getText());
             System.out.println(stages);
