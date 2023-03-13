@@ -9,7 +9,6 @@ public class ContactsPage{
 
     @FindBy(id = "menu-contacts")
     private WebElement contactsMenu;
-
     @FindBy(xpath = "//button[@id='new-contact']")
     private WebElement newContactButton;
 

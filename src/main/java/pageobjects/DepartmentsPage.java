@@ -9,7 +9,6 @@ public class DepartmentsPage{
 
     @FindBy(id = "menu-departments")
     private WebElement departmentsMenu;
-
     @FindBy(id = "new-department")
     private WebElement newDepartmentButton;
 
