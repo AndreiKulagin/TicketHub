@@ -57,8 +57,8 @@ public class TicketsPage {
         List<WebElement>assigneesElements = assigneeHeader.findElements(By.xpath("//tr[@class='assigned-manager']//span"));
         for(WebElement assigneesElement : assigneesElements){
             assignees.add(assigneesElement.getText());
-            System.out.println(assignees);
         }
+        System.out.println(assignees);
     }
 
     public void getAllStages(){
