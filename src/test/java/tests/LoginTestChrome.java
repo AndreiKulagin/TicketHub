@@ -49,8 +49,7 @@ public class LoginTestChrome {
         driver.findElement(By.id("username")).sendKeys(username);
         driver.findElement(By.id("password")).sendKeys(password);
         driver.findElement(By.id("login-signin")).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='body']/app-root/" +
-                "ticketshub-application/div[2]/div[3]/tickets/div/div/div/div/table/tbody/tr[1]/th[2]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//th[contains(text(),'Id')]")));
 
 
         TicketsPage ticketsPage = new TicketsPage(driver);
