@@ -35,7 +35,7 @@ public class TicketsPage {
 
     public void getAllIds(){
         List<String> ids = new ArrayList<>();
-        List<WebElement> idElements = idHeader.findElements(By.xpath("//td[@width='80px']//span/span"));
+        List<WebElement> idElements = driver.findElements(By.xpath("//td[@width='80px']//span/span"));
 
         for(WebElement idElement : idElements){
             ids.add(idElement.getText());
@@ -45,7 +45,7 @@ public class TicketsPage {
 
     public void getAllTitles(){
         List<String> titles = new ArrayList<>();
-        List<WebElement> titlesElements = titleHeader.findElements(By.xpath("//a[@class='ticket-title-id locked-link']//span"));
+        List<WebElement> titlesElements = driver.findElements(By.xpath("//a[@class='ticket-title-id locked-link']//span"));
         for(WebElement titlesElement : titlesElements){
             titles.add(titlesElement.getText());
         }
@@ -54,7 +54,7 @@ public class TicketsPage {
 
     public void getAllAssignees(){
         List<String> assignees = new ArrayList<>();
-        List<WebElement>assigneesElements = assigneeHeader.findElements(By.xpath("//tr[@class='assigned-manager']//span"));
+        List<WebElement>assigneesElements = driver.findElements(By.xpath("//tr[@class='assigned-manager']//span"));
         for(WebElement assigneesElement : assigneesElements){
             assignees.add(assigneesElement.getText());
         }
@@ -63,7 +63,7 @@ public class TicketsPage {
 
     public void getAllStages(){
         List<String> stages = new ArrayList<>();
-        List<WebElement>stagesElements = stageHeader.findElements(By.xpath("//*[@id='body']/app-root" +
+        List<WebElement>stagesElements = driver.findElements(By.xpath("//*[@id='body']/app-root" +
                 "/ticketshub-application/div[2]/div[3]/tickets/div/div/div/div/table/tbody/tr/td[7]/span"));
         for(WebElement stagesElement : stagesElements){
             stages.add(stagesElement.getText());
