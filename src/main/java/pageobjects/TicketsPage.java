@@ -67,7 +67,7 @@ public class TicketsPage {
                 "/ticketshub-application/div[2]/div[3]/tickets/div/div/div/div/table/tbody/tr/td[7]/span"));
         for(WebElement stagesElement : stagesElements){
             stages.add(stagesElement.getText());
-            System.out.println(stages);
         }
+        System.out.println(stages);
     }
 }
