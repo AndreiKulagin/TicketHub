@@ -1,18 +1,24 @@
 package tests;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import pageobjects.DashboardPage;
+import pageobjects.TicketsPage;
 import org.junit.jupiter.api.*;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.Properties;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LoginTestChrome {
 
     private WebDriver driver;
     private String url;
+    private String username;
+    private String password;
 
     @BeforeAll
     public static void setUpClass() {
@@ -26,24 +32,41 @@ public class LoginTestChrome {
         FileInputStream input = new FileInputStream("src/test/resources/login.properties");
         props.load(input);
         url = props.getProperty("url");
+        username = props.getProperty("username");
+        password = props.getProperty("password");
 
-        // Create Chrome driver
         driver = new ChromeDriver();
     }
 
     @Test
     public void testLogin() {
-
+        Duration duration = Duration.ofSeconds(10);
         driver.get(url);
+        WebDriverWait wait = new WebDriverWait(driver,duration);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("username")));
+        driver.findElement(By.id("username")).sendKeys(username);
+        driver.findElement(By.id("password")).sendKeys(password);
+        driver.findElement(By.id("login-signin")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='body']/app-root/" +
+                "ticketshub-application/div[2]/div[3]/tickets/div/div/div/div/table/tbody/tr[1]/th[2]")));
 
-        String expectedUrl = "http://176.36.27.131:8180/#/login";
-          String actualUrl = driver.getCurrentUrl();
-        assertEquals(expectedUrl, actualUrl);
+
+        TicketsPage ticketsPage = new TicketsPage(driver);
+        ticketsPage.getAllIds();
+        ticketsPage.getAllTitles();
+        ticketsPage.getAllAssignees();
+        ticketsPage.getAllStages();
+
+        DashboardPage dashboardPage = new DashboardPage(driver);
+        dashboardPage.getAllTitlesWithCategoryDevelopment();
+        dashboardPage.getAllTitlesWithCategoryFinance();
+        dashboardPage.getAllIdsWithPriorityP3();
+
     }
 
     @AfterEach
     public void tearDown() {
-        // Close browser
+
         driver.quit();
     }
 }
