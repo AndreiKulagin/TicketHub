@@ -38,9 +38,12 @@ public class TicketsPage {
         List<WebElement> idElements = idHeader.findElements(By.xpath("//td[@width='80px']//span"));
 
         for(WebElement idElement : idElements){
-            ids.add(idElement.getText());
-            System.out.println(ids);
+            String id = idElement.getText();
+            if(!ids.contains(id)){
+                ids.add(id);
+            }
         }
+        System.out.println(ids);
     }
 
     public void getAllTitles(){
