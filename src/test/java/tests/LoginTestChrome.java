@@ -1,4 +1,5 @@
 package tests;
+
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pageobjects.DashboardPage;
@@ -27,10 +28,11 @@ public class LoginTestChrome {
 
     @BeforeEach
     public void setUp() throws IOException {
-        // Load properties from config file
+
         Properties props = new Properties();
         FileInputStream input = new FileInputStream("src/test/resources/login.properties");
         props.load(input);
+
         url = props.getProperty("url");
         username = props.getProperty("username");
         password = props.getProperty("password");
