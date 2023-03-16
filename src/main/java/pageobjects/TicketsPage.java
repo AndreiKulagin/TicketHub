@@ -33,41 +33,70 @@ public class TicketsPage {
         PageFactory.initElements(driver,this);
     }
 
-    public void getAllIds(){
-        List<String> ids = new ArrayList<>();
-        List<WebElement> idElements = driver.findElements(By.xpath("//td[@width='80px']//span/span"));
-
-        for(WebElement idElement : idElements){
-            ids.add(idElement.getText());
+    public void getAllIds(String columnTitle){
+        List<WebElement> headers = driver.findElements(By.xpath("//th"));
+        int neededColumnNumber = 0;
+        for(int i=0; i< headers.size(); i++){
+            if (headers.get(i).getText().contains(columnTitle)) {
+                neededColumnNumber = i;
+                break;
             }
-        System.out.println(ids);
+        }
+
+        List<WebElement> neededColumn = driver.findElements(By.xpath("//table//tr/td[" + (neededColumnNumber + 1) + "]"));
+
+        for(WebElement cell : neededColumn){
+            System.out.println(cell.getText());
+        }
+    }
+    public void getAllTitles(String columnTitle){
+        List<WebElement> headers = driver.findElements(By.xpath("//th"));
+        int neededColumnNumber = 0;
+        for(int i=0; i< headers.size(); i++){
+            if (headers.get(i).getText().contains(columnTitle)) {
+                neededColumnNumber = i;
+                break;
+            }
+        }
+
+        List<WebElement> neededColumn = driver.findElements(By.xpath("//table//tr/td[" + (neededColumnNumber + 1) + "]"));
+
+        for(WebElement cell : neededColumn){
+            System.out.println(cell.getText());
+        }
     }
 
-    public void getAllTitles(){
-        List<String> titles = new ArrayList<>();
-        List<WebElement> titlesElements = driver.findElements(By.xpath("//a[@class='ticket-title-id locked-link']//span"));
-        for(WebElement titlesElement : titlesElements){
-            titles.add(titlesElement.getText());
+    public void getAllAssignees(String columnTitle){
+        List<WebElement> headers = driver.findElements(By.xpath("//th"));
+        int neededColumnNumber = 0;
+        for(int i=0; i< headers.size(); i++){
+            if (headers.get(i).getText().contains(columnTitle)) {
+                neededColumnNumber = i;
+                break;
+            }
         }
-        System.out.println(titles);
+
+        List<WebElement> neededColumn = driver.findElements(By.xpath("//table//tr/td[" + (neededColumnNumber + 1) + "]"));
+
+        for(WebElement cell : neededColumn){
+            System.out.println(cell.getText());
+        }
     }
 
-    public void getAllAssignees(){
-        List<String> assignees = new ArrayList<>();
-        List<WebElement>assigneesElements = driver.findElements(By.xpath("//tr[@class='assigned-manager']//span"));
-        for(WebElement assigneesElement : assigneesElements){
-            assignees.add(assigneesElement.getText());
+    public void getAllStages(String columnTitle){
+        List<WebElement> headers = driver.findElements(By.xpath("//th"));
+        int neededColumnNumber = 0;
+        for(int i=0; i< headers.size(); i++){
+            if (headers.get(i).getText().contains(columnTitle)) {
+                neededColumnNumber = i;
+                break;
+            }
         }
-        System.out.println(assignees);
-    }
 
-    public void getAllStages(){
-        List<String> stages = new ArrayList<>();
-        List<WebElement>stagesElements = driver.findElements(By.xpath("//*[@id='body']/app-root" +
-                "/ticketshub-application/div[2]/div[3]/tickets/div/div/div/div/table/tbody/tr/td[7]/span"));
-        for(WebElement stagesElement : stagesElements){
-            stages.add(stagesElement.getText());
+        List<WebElement> neededColumn = driver.findElements(By.xpath("//table//tr/td[" + (neededColumnNumber + 1) + "]"));
+
+        for(WebElement cell : neededColumn){
+            System.out.println(cell.getText());
         }
-        System.out.println(stages);
     }
 }

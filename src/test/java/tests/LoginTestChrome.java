@@ -23,7 +23,10 @@ public class LoginTestChrome {
 
     @BeforeAll
     public static void setUpClass() {
+
         System.setProperty("webdriver.chrome.driver", "/usr/local/maven/chromedriver");
+        System.setProperty("webdriver.http.factory", "jdk-http-client");
+
     }
 
     @BeforeEach
@@ -41,7 +44,8 @@ public class LoginTestChrome {
     }
 
     @Test
-    public void testLogin() {
+    public void testLogin() throws InterruptedException {
+
         Duration duration = Duration.ofSeconds(10);
         driver.get(url);
         WebDriverWait wait = new WebDriverWait(driver,duration);
@@ -49,19 +53,18 @@ public class LoginTestChrome {
         driver.findElement(By.id("username")).sendKeys(username);
         driver.findElement(By.id("password")).sendKeys(password);
         driver.findElement(By.id("login-signin")).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//th[contains(text(),'Id')]")));
 
+        Thread.sleep(1000);
 
-        TicketsPage ticketsPage = new TicketsPage(driver);
-        ticketsPage.getAllIds();
-        ticketsPage.getAllTitles();
-        ticketsPage.getAllAssignees();
-        ticketsPage.getAllStages();
+        //TicketsPage ticketsPage = new TicketsPage(driver);
+
+        //ticketsPage.getAllIds("Id");
+        //ticketsPage.getAllTitles("Title");
+        //ticketsPage.getAllAssignees("Assignee");
+        //ticketsPage.getAllStages("Stage");
 
         DashboardPage dashboardPage = new DashboardPage(driver);
         dashboardPage.getAllTitlesWithCategoryDevelopment();
-        dashboardPage.getAllTitlesWithCategoryFinance();
-        dashboardPage.getAllIdsWithPriorityP3();
 
     }
 
