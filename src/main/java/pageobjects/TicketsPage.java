@@ -6,18 +6,17 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class TicketsPage {
+
     private WebDriver driver;
 
     @FindBy(id = "menu-tickets")
     private WebElement ticketsMenu;
 
-    @FindBy(xpath = "//th[contains(text(),'Id')]")
+    @FindBy(xpath = "//th[[8]]]")
     public WebElement idHeader;
-
 
     @FindBy(xpath = "//th[contains(text(),'Title')]")
     public WebElement titleHeader;
@@ -49,6 +48,7 @@ public class TicketsPage {
             System.out.println(cell.getText());
         }
     }
+
     public void getAllTitles(String columnTitle){
         List<WebElement> headers = driver.findElements(By.xpath("//th"));
         int neededColumnNumber = 0;

@@ -12,6 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.List;
 import java.util.Properties;
 
 public class LoginTestChrome {
@@ -56,16 +57,17 @@ public class LoginTestChrome {
 
         Thread.sleep(1000);
 
-        //TicketsPage ticketsPage = new TicketsPage(driver);
+        TicketsPage ticketsPage = new TicketsPage(driver);
 
-        //ticketsPage.getAllIds("Id");
-        //ticketsPage.getAllTitles("Title");
-        //ticketsPage.getAllAssignees("Assignee");
-        //ticketsPage.getAllStages("Stage");
+        ticketsPage.getAllIds("Id");
+        ticketsPage.getAllTitles("Title");
+        ticketsPage.getAllAssignees("Assignee");
+        ticketsPage.getAllStages("Stage");
 
         DashboardPage dashboardPage = new DashboardPage(driver);
         dashboardPage.getAllTitlesWithCategoryDevelopment();
-
+        dashboardPage.getAllTitlesWithCategoryFinance();
+        dashboardPage.getAllIdsWithPriorityP3();
     }
 
     @AfterEach

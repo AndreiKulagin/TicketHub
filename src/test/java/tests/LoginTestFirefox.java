@@ -50,15 +50,18 @@ public class LoginTestFirefox {
 
         Thread.sleep(5000);
 
-        //TicketsPage ticketsPage = new TicketsPage(driver);
+        TicketsPage ticketsPage = new TicketsPage(driver);
 
-        //ticketsPage.getAllIds("Id");
-        //ticketsPage.getAllTitles("Title");
-        //ticketsPage.getAllAssignees("Assignee");
-        //ticketsPage.getAllStages("Stage");
+        ticketsPage.getAllIds("Id");
+        ticketsPage.getAllTitles("Title");
+        ticketsPage.getAllAssignees("Assignee");
+        ticketsPage.getAllStages("Stage");
 
         DashboardPage dashboardPage = new DashboardPage(driver);
+
         dashboardPage.getAllTitlesWithCategoryDevelopment();
+        dashboardPage.getAllTitlesWithCategoryFinance();
+        dashboardPage.getAllIdsWithPriorityP3();
 
     }
 
