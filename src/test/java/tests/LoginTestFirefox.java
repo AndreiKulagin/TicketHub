@@ -1,5 +1,9 @@
 package tests;
-import org.junit.jupiter.api.*;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -16,7 +20,8 @@ public class LoginTestFirefox {
 
     @BeforeAll
     public static void setUpClass() {
-        System.setProperty("webdriver.gecko.driver", "/usr/local/maven/geckodriver");
+        System.setProperty("webdriver.gecko.driver", "C:\\Users\\viktor.chmel\\.m2\\repository\\webdriver\\gecko\\geckodriver.exe");
+        System.setProperty("webdriver.firefox.marionette", "C:\\Users\\viktor.chmel\\.m2\\repository\\webdriver\\gecko\\geckodriver.exe");
     }
 
     @BeforeEach

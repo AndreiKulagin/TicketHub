@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TicketsPage {
-    private WebDriver driver;
+    private final WebDriver driver;
 
     @FindBy(id = "menu-tickets")
     private WebElement ticketsMenu;
@@ -39,7 +39,7 @@ public class TicketsPage {
 
         for(WebElement idElement : idElements){
             ids.add(idElement.getText());
-            }
+        }
         System.out.println(ids);
     }
 

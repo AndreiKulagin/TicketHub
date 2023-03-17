@@ -2,69 +2,57 @@ package pageobjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class DashboardPage {
-    private WebDriver driver;
+    private final WebDriver driver;
 
     @FindBy(xpath = "//a[@id='menu-dashboard']")
     private WebElement dashboardMenu;
 
-    @FindBy(xpath = "//*[@id='company-additional-information'][1]")
+    @FindBy(xpath = "//a[@id='company-additional-information'][1]") //div[contains(text(),'Deadline is over')]")
     public WebElement companyAdditionalInformationButton;
 
+    @FindBy(css = "button#dashboard-done")
+    public WebElement doneDeadlineButton;
 
     public DashboardPage(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver,this);
     }
 
-        public List<String> getAllTitlesWithCategoryDevelopment(){
+        public List<String> getAllTitlesByCategory(String categoryName) throws InterruptedException {
         dashboardMenu.click();
+
+        Actions action = new Actions(driver);
+        action.moveToElement(doneDeadlineButton).perform();
+        doneDeadlineButton.click();
+
         companyAdditionalInformationButton.click();
+        Thread.sleep(10_000);
 
-        List<WebElement> rows = driver.findElements(By.xpath("//*[@id='collapse1']/div/table/tbody/tr"));
+        List<WebElement> rows = driver.findElements(By.xpath("//span[contains(text(), '" + categoryName + "')]//ancestor::tr//a[@id='ticket-block-title']"));
 
-        List<WebElement> filteredRows = rows.stream()
-                .filter(row->row.findElement(By.xpath("//td[9]")).getText().equals("Разработка"))
+        return rows.stream()
+                .map(WebElement::getText)
                 .collect(Collectors.toList());
-        return filteredRows.stream()
-                .map(row->row.findElement(By.xpath("//td[3]")).getText())
-                .collect(Collectors.toList());
-
     }
 
-    public List<String> getAllTitlesWithCategoryFinance(){
+    public List<String> getAllIdsWithPriorityP3() throws InterruptedException {
         dashboardMenu.click();
         companyAdditionalInformationButton.click();
+        Thread.sleep(10_000);
 
-        List<WebElement> rows = driver.findElements(By.xpath("//*[@id='collapse1']/div/table/tbody/tr"));
+        List<WebElement> rows = driver.findElements(By.xpath("//td[contains(text(), 'P3')]//ancestor::tr/td[2]"));
 
-        List<WebElement> filteredRows = rows.stream()
-                .filter(row->row.findElement(By.xpath("//td[9]")).getText().equals("Финансы"))
-                .collect(Collectors.toList());
-        return filteredRows.stream()
-                .map(row->row.findElement(By.xpath("//td[3]")).getText())
-                .collect(Collectors.toList());
-
-    }
-
-    public List<String> getAllIdsWithPriorityP3(){
-        dashboardMenu.click();
-        companyAdditionalInformationButton.click();
-
-        List<WebElement> rows = driver.findElements(By.xpath("//*[@id='collapse1']/div/table/tbody/tr"));
-
-        List<WebElement> filteredRows = rows.stream()
-                .filter(row->row.findElement(By.xpath("//td[5]")).getText().equals("P3"))
-                .collect(Collectors.toList());
-        return filteredRows.stream()
-                .map(row->row.findElement(By.xpath("//td[2]")).getText())
+        return rows.stream()
+                .map(WebElement::getText)
                 .collect(Collectors.toList());
     }
 }
