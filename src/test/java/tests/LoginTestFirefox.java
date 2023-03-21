@@ -14,7 +14,6 @@ import java.time.Duration;
 import java.util.Properties;
 
 public class LoginTestFirefox {
-
     private WebDriver driver;
     private String url;
     private String username;
@@ -27,7 +26,6 @@ public class LoginTestFirefox {
 
     @BeforeEach
     public void setUp() throws IOException {
-
         Properties props = new Properties();
         FileInputStream input = new FileInputStream("src/test/resources/login.properties");
         props.load(input);
@@ -67,7 +65,6 @@ public class LoginTestFirefox {
 
     @AfterEach
     public void tearDown() {
-
         driver.quit();
     }
 }

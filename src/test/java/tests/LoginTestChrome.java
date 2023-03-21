@@ -12,11 +12,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.Duration;
-import java.util.List;
 import java.util.Properties;
 
 public class LoginTestChrome {
-
     private WebDriver driver;
     private String url;
     private String username;
@@ -24,15 +22,12 @@ public class LoginTestChrome {
 
     @BeforeAll
     public static void setUpClass() {
-
         System.setProperty("webdriver.chrome.driver", "/usr/local/maven/chromedriver");
         System.setProperty("webdriver.http.factory", "jdk-http-client");
-
     }
 
     @BeforeEach
     public void setUp() throws IOException {
-
         Properties props = new Properties();
         FileInputStream input = new FileInputStream("src/test/resources/login.properties");
         props.load(input);
@@ -72,7 +67,6 @@ public class LoginTestChrome {
 
     @AfterEach
     public void tearDown() {
-
         driver.quit();
     }
 }

@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 public class ContactsPage{
-
     private WebDriver driver;
 
     @FindBy(id = "menu-contacts")
