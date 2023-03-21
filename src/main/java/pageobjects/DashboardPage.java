@@ -10,6 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 public class DashboardPage {
+
     private WebDriver driver;
 
     @FindBy(xpath = "//a[@id='menu-dashboard']")

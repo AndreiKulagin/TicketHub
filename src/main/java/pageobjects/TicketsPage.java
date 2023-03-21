@@ -9,6 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 public class TicketsPage {
+
     private WebDriver driver;
 
     @FindBy(xpath = "//button[@id='create-new-ticket']")
@@ -64,6 +65,18 @@ public class TicketsPage {
 
     @FindBy(xpath = "//button[@id='submit-btn']")
     public WebElement submitButton;
+
+    @FindBy(xpath = "//th[[8]]]")
+    public WebElement idHeader;
+
+    @FindBy(xpath = "//th[contains(text(),'Title')]")
+    public WebElement titleHeader;
+
+    @FindBy(xpath = "//th[contains(text(),'Assignee')]")
+    public WebElement assigneeHeader;
+
+    @FindBy(xpath = "//th[contains(text(),'Stage')]")
+    public WebElement stageHeader;
 
     public TicketsPage(WebDriver driver){
         this.driver = driver;

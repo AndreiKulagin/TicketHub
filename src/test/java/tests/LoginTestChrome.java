@@ -22,6 +22,7 @@ public class LoginTestChrome {
 
     @BeforeAll
     public static void setUpClass() {
+
         System.setProperty("webdriver.chrome.driver", "/usr/local/maven/chromedriver");
         System.setProperty("webdriver.http.factory", "jdk-http-client");
     }
