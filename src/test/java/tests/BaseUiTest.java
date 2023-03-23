@@ -13,6 +13,7 @@ import java.time.Duration;
 import java.util.Properties;
 
 public class BaseUiTest {
+
     protected WebDriver driver;
     protected String url;
     protected String username;
@@ -21,12 +22,14 @@ public class BaseUiTest {
 
     @BeforeAll
     public static void setUpClass() {
+
         System.setProperty("webdriver.chrome.driver", "/usr/local/maven/chromedriver");
         System.setProperty("webdriver.http.factory", "jdk-http-client");
     }
 
     @BeforeEach
     public void setUp() throws IOException {
+
         Properties props = new Properties();
         FileInputStream input = new FileInputStream("src/test/resources/login.properties");
         props.load(input);
