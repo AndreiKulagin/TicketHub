@@ -9,6 +9,7 @@ public class CreateNewDepartment extends BaseUiTest{
 
     @Test
     public void testCreateNewDepartment(){
+
         driver.get(url);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("username")));
         driver.findElement(By.id("username")).sendKeys(username);
