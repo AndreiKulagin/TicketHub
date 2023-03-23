@@ -8,7 +8,7 @@ import pageobjects.TicketsPage;
 public class CreateNewTicket extends BaseUiTest{
 
     @Test
-    public void testCreateNewTicket()throws InterruptedException{
+    public void testCreateNewTicket(){
         driver.get(url);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("username")));
         driver.findElement(By.id("username")).sendKeys(username);

@@ -43,6 +43,7 @@ public class BaseUiTest {
 
     @AfterEach
     public void tearDown() {
+
         driver.quit();
     }
 }
