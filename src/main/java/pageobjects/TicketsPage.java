@@ -112,7 +112,6 @@ public class TicketsPage {
         departmentOptionManagersButton.click();
 
         submitButton.click();
-
     }
 
     public void getAllIds(String columnTitle){
