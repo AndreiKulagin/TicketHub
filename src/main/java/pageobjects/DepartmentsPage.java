@@ -7,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 
 public class DepartmentsPage{
+
     private WebDriver driver;
 
     @FindBy(id = "menu-departments")
@@ -27,6 +28,7 @@ public class DepartmentsPage{
     }
 
     public void createNewDepartment(String titleName){
+
         departmentsMenu.click();
         newDepartmentButton.click();
         inputTitle.sendKeys(titleName);
