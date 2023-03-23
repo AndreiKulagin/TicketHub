@@ -5,7 +5,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 public class TicketsPage {
@@ -13,93 +16,86 @@ public class TicketsPage {
     private WebDriver driver;
 
     @FindBy(xpath = "//button[@id='create-new-ticket']")
-    public WebElement newTicketButton;
+    private WebElement newTicketButton;
 
     @FindBy(xpath = "//input[@id='title']")
-    public WebElement inputTitle;
+    private WebElement inputTitle;
 
     @FindBy(xpath = "//textarea[@id='description']")
-    public WebElement textareaDescription;
+    private WebElement textareaDescription;
 
     @FindBy(xpath = "//select[@id='categoryId']")
-    public WebElement selectCategoryButton;
+    private WebElement selectCategoryButton;
 
     @FindBy(xpath = "//select[@id='categoryId']/option[contains(text(),'Test')][1]")
-    public WebElement categoryOptionTestButton;
+    private WebElement categoryOptionTestButton;
 
     @FindBy(xpath = "//select[@id='stageId']")
-    public WebElement selectStageButton;
+    private WebElement selectStageButton;
 
     @FindBy(xpath = "//option[contains(text(),'DONE')]")
-    public WebElement stageOptionOpenButton;
+    private WebElement stageOptionOpenButton;
 
     @FindBy(xpath = "//select[@id='company']")
-    public WebElement companySelectButton;
+    private WebElement companySelectButton;
 
     @FindBy(xpath = "//select[@id='company']/option[contains(text(),'Kul')]")
-    public WebElement companyOptionTestButton;
+    private WebElement companyOptionTestButton;
 
     @FindBy(xpath = "//select[@id='contactId']")
-    public WebElement contactSelectButton;
+    private WebElement contactSelectButton;
 
     @FindBy(xpath = "//select[@id='contactId']/option[contains(text(),'Kul')]")
-    public WebElement contactOptionButton;
+    private WebElement contactOptionButton;
 
     @FindBy(xpath = "//select[@id='priority']")
-    public WebElement prioritySelectButton;
+    private WebElement prioritySelectButton;
 
     @FindBy(xpath = "//select[@id='priority']/option[contains(text(),'P1')]")
-    public WebElement priorityOptionP1Button;
+    private WebElement priorityOptionP1Button;
 
     @FindBy(xpath = "//p-calendar[@id='done-deadline-date']/span/button/span[1]")
-    public WebElement doneDeadlineCalendarButton;
+    private WebElement doneDeadlineCalendarButton;
 
     @FindBy(xpath = "//table/tbody/tr[5]/td[5]")
-    public WebElement calendarSelectDateButton;
+    private WebElement calendarSelectDateButton;
 
     @FindBy(xpath = "//select[@id='department']")
-    public WebElement departmentSelectButton;
+    private WebElement departmentSelectButton;
 
     @FindBy(xpath = "//select[@id='department']/option[contains(text(),'Managers')]")
-    public WebElement departmentOptionManagersButton;
+    private WebElement departmentOptionManagersButton;
 
     @FindBy(xpath = "//button[@id='submit-btn']")
-    public WebElement submitButton;
+    private WebElement submitButton;
 
-    @FindBy(xpath = "//th[[8]]]")
-    public WebElement idHeader;
-
-    @FindBy(xpath = "//th[contains(text(),'Title')]")
-    public WebElement titleHeader;
-
-    @FindBy(xpath = "//th[contains(text(),'Assignee')]")
-    public WebElement assigneeHeader;
-
-    @FindBy(xpath = "//th[contains(text(),'Stage')]")
-    public WebElement stageHeader;
 
     public TicketsPage(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver,this);
     }
 
-    public void createNewTicket()throws InterruptedException {
+    public void createNewTicket(String titleName,String textareaName) {
+
+        Duration duration = Duration.ofSeconds(10);
+        WebDriverWait wait = new WebDriverWait(driver,duration);
+
         newTicketButton.click();
-        inputTitle.sendKeys("Andrei Kulagins");
+        inputTitle.sendKeys(titleName);
 
         textareaDescription.click();
-        textareaDescription.sendKeys("Test");
+        textareaDescription.sendKeys(textareaName);
 
         selectCategoryButton.click();
-        Thread.sleep(1000);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//select[@id='categoryId']/option[contains(text(),'Test')][1]")));
         categoryOptionTestButton.click();
 
         selectStageButton.click();
-        Thread.sleep(1000);
+        wait.until((ExpectedConditions.presenceOfElementLocated(By.xpath("//option[contains(text(),'DONE')]"))));
         stageOptionOpenButton.click();
 
         companySelectButton.click();
-        Thread.sleep(1000);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//select[@id='company']/option[contains(text(),'Kul')]")));
         companyOptionTestButton.click();
 
         contactSelectButton.click();
