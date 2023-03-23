@@ -114,6 +114,7 @@ public class TicketsPage {
         submitButton.click();
 
     }
+
     public void getAllIds(String columnTitle){
         List<WebElement> headers = driver.findElements(By.xpath("//th"));
         int neededColumnNumber = 0;
