@@ -9,6 +9,7 @@ public class CreateNewTicket extends BaseUiTest{
 
     @Test
     public void testCreateNewTicket(){
+
         driver.get(url);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("username")));
         driver.findElement(By.id("username")).sendKeys(username);
