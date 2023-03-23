@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class CompaniesPage {
+
     private WebDriver driver;
 
     @FindBy(id = "menu-companies")
@@ -36,6 +37,7 @@ public class CompaniesPage {
     }
 
     public void createNewCompany(String companyName){
+
         Duration duration = Duration.ofSeconds(10);
         WebDriverWait wait = new WebDriverWait(driver,duration);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@id='create-new-ticket']")));
