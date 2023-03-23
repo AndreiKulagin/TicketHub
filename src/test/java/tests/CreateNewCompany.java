@@ -9,6 +9,7 @@ public class CreateNewCompany extends BaseUiTest {
 
     @Test
     public void testCreateNewCompany(){
+
         driver.get(url);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("username")));
         driver.findElement(By.id("username")).sendKeys(username);
