@@ -1,7 +1,6 @@
 package pageobjects;
 
 import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -31,6 +30,9 @@ public class CompaniesPage {
     @FindBy(xpath ="//tr[2]//td[5]//a")
     private WebElement deleteButton;
 
+    @FindBy(xpath = "//button[@id='create-new-ticket']")
+    private WebElement createNewTicketButton;
+
     public CompaniesPage(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver,this);
@@ -40,15 +42,15 @@ public class CompaniesPage {
 
         Duration duration = Duration.ofSeconds(10);
         WebDriverWait wait = new WebDriverWait(driver,duration);
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@id='create-new-ticket']")));
+        wait.until(ExpectedConditions.visibilityOf(createNewTicketButton));
         Actions actions = new Actions(driver);
         actions.moveToElement(companiesMenu).perform();
         companiesMenu.click();
         newCompanyButton.click();
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='name']")));
+        wait.until(ExpectedConditions.visibilityOf(inputCompanyName));
         inputCompanyName.sendKeys(companyName);
         submitButton.click();
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@id='new-company']")));
+        wait.until(ExpectedConditions.visibilityOf(newCompanyButton));
         actions.moveToElement(deleteButton).perform();
         deleteButton.click();
         Alert alert = driver.switchTo().alert();

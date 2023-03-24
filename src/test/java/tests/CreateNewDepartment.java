@@ -10,15 +10,9 @@ public class CreateNewDepartment extends BaseUiTest{
     @Test
     public void testCreateNewDepartment(){
 
-        driver.get(url);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("username")));
-        driver.findElement(By.id("username")).sendKeys(username);
-        driver.findElement(By.id("password")).sendKeys(password);
-        driver.findElement(By.id("login-signin")).click();
-
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@id='create-new-ticket']")));
-
-        DepartmentsPage departmentsPage = new DepartmentsPage(driver);
-        departmentsPage.createNewDepartment("Andrei Kulagin");
+      logIn();
+      wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@id='create-new-ticket']")));
+      DepartmentsPage departmentsPage = new DepartmentsPage(driver);
+      departmentsPage.createNewDepartment("Andrei Kulagin");
     }
 }

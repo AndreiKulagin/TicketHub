@@ -3,8 +3,10 @@ package tests;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.FileInputStream;
@@ -44,6 +46,14 @@ public class BaseUiTest {
         wait = new WebDriverWait(driver, duration);
     }
 
+    public void logIn(){
+
+        driver.get(url);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("username")));
+        driver.findElement(By.id("username")).sendKeys(username);
+        driver.findElement(By.id("password")).sendKeys(password);
+        driver.findElement(By.id("login-signin")).click();
+    }
     @AfterEach
     public void tearDown() {
 

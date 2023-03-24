@@ -34,13 +34,13 @@ public class TicketsPage {
     private WebElement selectStageButton;
 
     @FindBy(xpath = "//option[contains(text(),'DONE')]")
-    private WebElement stageOptionOpenButton;
+    private WebElement stageOptionDoneButton;
 
     @FindBy(xpath = "//select[@id='company']")
     private WebElement companySelectButton;
 
     @FindBy(xpath = "//select[@id='company']/option[contains(text(),'Kul')]")
-    private WebElement companyOptionTestButton;
+    private WebElement companyOptionKulButton;
 
     @FindBy(xpath = "//select[@id='contactId']")
     private WebElement contactSelectButton;
@@ -87,16 +87,16 @@ public class TicketsPage {
         textareaDescription.sendKeys(textareaName);
 
         selectCategoryButton.click();
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//select[@id='categoryId']/option[contains(text(),'Test')][1]")));
+        wait.until(ExpectedConditions.visibilityOf(categoryOptionTestButton));
         categoryOptionTestButton.click();
 
         selectStageButton.click();
-        wait.until((ExpectedConditions.presenceOfElementLocated(By.xpath("//option[contains(text(),'DONE')]"))));
-        stageOptionOpenButton.click();
+        wait.until(ExpectedConditions.visibilityOf(stageOptionDoneButton));
+        stageOptionDoneButton.click();
 
         companySelectButton.click();
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//select[@id='company']/option[contains(text(),'Kul')]")));
-        companyOptionTestButton.click();
+        wait.until(ExpectedConditions.visibilityOf(companyOptionKulButton));
+        companyOptionKulButton.click();
 
         contactSelectButton.click();
         contactOptionButton.click();
