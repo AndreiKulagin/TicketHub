@@ -6,30 +6,31 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 public class DepartmentsPage{
+
     private WebDriver driver;
 
     @FindBy(id = "menu-departments")
-    public WebElement departmentsMenu;
+    private WebElement departmentsMenu;
 
     @FindBy(id = "new-department")
-    public WebElement newDepartmentButton;
+    private WebElement newDepartmentButton;
 
     @FindBy(xpath = "//input[@id='name']")
-    public WebElement inputTitle;
+    private WebElement inputTitle;
 
     @FindBy(xpath = "//button[@id='department-form-submit']")
-    public WebElement submitButton;
+    private WebElement submitButton;
 
-    public DepartmentsPage(WebDriver driver)throws InterruptedException{
+    public DepartmentsPage(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver,this);
     }
 
-    public void createNewDepartment() throws InterruptedException {
+    public void createNewDepartment(String titleName){
+
         departmentsMenu.click();
         newDepartmentButton.click();
-        Thread.sleep(1000);
-        inputTitle.sendKeys("Andrei Kulagin");
+        inputTitle.sendKeys(titleName);
         submitButton.click();
     }
 }

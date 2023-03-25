@@ -17,10 +17,10 @@ public class DashboardPage {
     private WebElement dashboardMenu;
 
     @FindBy(xpath = "//*[@id='accordion7']/div")
-    public WebElement companyAdditionalInformationButton;
+    private WebElement companyAdditionalInformationButton;
 
     @FindBy(xpath = "//button[@id='dashboard-done']")
-    public WebElement dashboardDoneButton;
+    private WebElement dashboardDoneButton;
 
 
     public DashboardPage(WebDriver driver) {
