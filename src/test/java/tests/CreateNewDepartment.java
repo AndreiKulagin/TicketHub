@@ -9,8 +9,6 @@ public class CreateNewDepartment extends BaseUiTest{
 
     @Test
     public void testCreateNewDepartment(){
-
-      logIn();
       wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@id='create-new-ticket']")));
       DepartmentsPage departmentsPage = new DepartmentsPage(driver);
       departmentsPage.createNewDepartment("Andrei Kulagin");
