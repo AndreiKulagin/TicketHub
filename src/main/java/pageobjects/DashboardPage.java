@@ -22,7 +22,6 @@ public class DashboardPage {
     @FindBy(xpath = "//button[@id='dashboard-done']")
     private WebElement dashboardDoneButton;
 
-
     public DashboardPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -31,21 +30,17 @@ public class DashboardPage {
     public void getPageDeadlineIsOver() throws InterruptedException {
         dashboardMenu.click();
         Thread.sleep(2000);
-
         Actions actions = new Actions(driver);
         actions.moveToElement(dashboardDoneButton).perform();
         Thread.sleep(2000);
-
         dashboardDoneButton.click();
         Thread.sleep(2000);
-
         companyAdditionalInformationButton.click();
         Thread.sleep(2000);
     }
 
     public void getAllTitlesWithCategoryDevelopment() throws InterruptedException {
         getPageDeadlineIsOver();
-
         List<WebElement> ticketTitles = driver.findElements(By.xpath("//span[contains(text(), 'Разработка')]//ancestor::tr//a[@id='ticket-block-title']"));
         for (WebElement title : ticketTitles) {
             String text = title.getText();
@@ -55,7 +50,6 @@ public class DashboardPage {
 
     public void getAllTitlesWithCategoryFinance() throws InterruptedException {
         getPageDeadlineIsOver();
-
         List<WebElement> ticketTitles = driver.findElements(By.xpath("//span[contains(text(), 'Финансы')]//ancestor::tr//a[@id='ticket-block-title']"));
         for (WebElement title : ticketTitles) {
             String text = title.getText();
@@ -65,7 +59,6 @@ public class DashboardPage {
 
     public void getAllIdsWithPriorityP3() throws InterruptedException {
         getPageDeadlineIsOver();
-
         List<WebElement> ticketTitles = driver.findElements(By.xpath("//td[contains(text(), 'P3')]//ancestor::tr//td[2]"));
         for (WebElement title : ticketTitles) {
             String text = title.getText();

@@ -69,48 +69,36 @@ public class TicketsPage {
     @FindBy(xpath = "//button[@id='submit-btn']")
     private WebElement submitButton;
 
-
     public TicketsPage(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver,this);
     }
 
     public void createNewTicket(String titleName,String textareaName) {
-
         Duration duration = Duration.ofSeconds(10);
         WebDriverWait wait = new WebDriverWait(driver,duration);
-
         newTicketButton.click();
         inputTitle.sendKeys(titleName);
-
         textareaDescription.click();
         textareaDescription.sendKeys(textareaName);
-
         selectCategoryButton.click();
         wait.until(ExpectedConditions.visibilityOf(categoryOptionTestButton));
         categoryOptionTestButton.click();
-
         selectStageButton.click();
         wait.until(ExpectedConditions.visibilityOf(stageOptionDoneButton));
         stageOptionDoneButton.click();
-
         companySelectButton.click();
         wait.until(ExpectedConditions.visibilityOf(companyOptionKulButton));
         companyOptionKulButton.click();
-
         contactSelectButton.click();
         contactOptionButton.click();
-
         prioritySelectButton.click();
         priorityOptionP1Button.click();
-
         doneDeadlineCalendarButton.click();
         calendarSelectDateButton.click();
         doneDeadlineCalendarButton.click();
-
         departmentSelectButton.click();
         departmentOptionManagersButton.click();
-
         submitButton.click();
     }
 
@@ -123,9 +111,7 @@ public class TicketsPage {
                 break;
             }
         }
-
         List<WebElement> neededColumn = driver.findElements(By.xpath("//table//tr/td[" + (neededColumnNumber + 1) + "]"));
-
         for(WebElement cell : neededColumn){
             System.out.println(cell.getText());
         }
@@ -140,9 +126,7 @@ public class TicketsPage {
                 break;
             }
         }
-
         List<WebElement> neededColumn = driver.findElements(By.xpath("//table//tr/td[" + (neededColumnNumber + 1) + "]"));
-
         for(WebElement cell : neededColumn){
             System.out.println(cell.getText());
         }
@@ -157,9 +141,7 @@ public class TicketsPage {
                 break;
             }
         }
-
         List<WebElement> neededColumn = driver.findElements(By.xpath("//table//tr/td[" + (neededColumnNumber + 1) + "]"));
-
         for(WebElement cell : neededColumn){
             System.out.println(cell.getText());
         }
@@ -174,9 +156,7 @@ public class TicketsPage {
                 break;
             }
         }
-
         List<WebElement> neededColumn = driver.findElements(By.xpath("//table//tr/td[" + (neededColumnNumber + 1) + "]"));
-
         for(WebElement cell : neededColumn){
             System.out.println(cell.getText());
         }

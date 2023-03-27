@@ -27,7 +27,6 @@ public class DepartmentsPage{
     }
 
     public void createNewDepartment(String titleName){
-
         departmentsMenu.click();
         newDepartmentButton.click();
         inputTitle.sendKeys(titleName);

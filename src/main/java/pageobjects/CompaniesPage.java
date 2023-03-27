@@ -39,7 +39,6 @@ public class CompaniesPage {
     }
 
     public void createNewCompany(String companyName){
-
         Duration duration = Duration.ofSeconds(10);
         WebDriverWait wait = new WebDriverWait(driver,duration);
         wait.until(ExpectedConditions.visibilityOf(createNewTicketButton));
