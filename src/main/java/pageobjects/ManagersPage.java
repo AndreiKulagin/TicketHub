@@ -19,10 +19,6 @@ public class ManagersPage {
 
     private WebDriver driver;
     Map<String, String> generatedData = new HashMap<>();
-    Duration duration = Duration.ofSeconds(10);
-    WebDriverWait wait = new WebDriverWait(driver, duration);
-    Actions actions = new Actions(driver);
-
 
     @FindBy(xpath = "//a[@id = 'menu-managers']")
     private WebElement managersMenuButton;
@@ -78,6 +74,9 @@ public class ManagersPage {
     }
 
     public void createNewManager() {
+        Duration duration = Duration.ofSeconds(10);
+        WebDriverWait wait = new WebDriverWait(driver, duration);
+        Actions actions = new Actions(driver);
         wait.until(ExpectedConditions.visibilityOf(createNewTicketButton));
         actions.moveToElement(managersMenuButton).perform();
         managersMenuButton.click();
@@ -108,6 +107,7 @@ public class ManagersPage {
         generatedData.put("Skype", generatedSkype);
         wait.until(ExpectedConditions.visibilityOf(submitButton));
         submitButton.click();
+
         for (Map.Entry<String, String> entry : generatedData.entrySet()) {
             System.out.println(entry.getKey() + " : " + entry.getValue());
         }
@@ -124,6 +124,7 @@ public class ManagersPage {
             String lastNameValue = generatedData.get("Last name");
             lastNameSearchInput.sendKeys(lastNameValue);
             searchManagerFilterButton.click();
+            wait.until(ExpectedConditions.visibilityOf(searchManagersResult));
             searchManagersResult.click();
             wait.until(ExpectedConditions.visibilityOf(managerDetailsBackToListButton));
             Map<String,String> fieldValues = new HashMap<>();
