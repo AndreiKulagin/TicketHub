@@ -2,15 +2,16 @@ package utils;
 
 import java.util.Random;
 
-public class StringUtils  {
+public class StringUtils {
 
-    public static String generateRandomString(int length) {
-        String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        StringBuilder sb = new StringBuilder(length);
+    public String generateRandomString(int length) {
+        String allowedChars = "abcdefghijklmnopqrstuvwxyz0123456789";
+        StringBuilder sb = new StringBuilder();
         Random rnd = new Random();
-        for (int i =0;i<length;i++){
-            sb.append(chars.charAt(rnd.nextInt(chars.length())));
+        while (sb.length() < length) {
+            int index = (int) (rnd.nextFloat() * allowedChars.length());
+            sb.append(allowedChars.charAt(index));
         }
-        return sb.toString();
+        return sb+"@example.com";
     }
 }

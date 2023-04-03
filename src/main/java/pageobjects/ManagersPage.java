@@ -1,6 +1,5 @@
 package pageobjects;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -10,6 +9,7 @@ import com.github.javafaker.Faker;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.StringUtils;
 
 import java.time.Duration;
 import java.util.HashMap;
@@ -19,6 +19,7 @@ public class ManagersPage {
 
     private WebDriver driver;
     Map<String, String> generatedData = new HashMap<>();
+    Map<String,String> fieldValues = new HashMap<>();
 
     @FindBy(xpath = "//a[@id = 'menu-managers']")
     private WebElement managersMenuButton;
@@ -68,12 +69,28 @@ public class ManagersPage {
     @FindBy(xpath = "//button[@id = 'manager-details-backtolist']")
     private WebElement managerDetailsBackToListButton;
 
+    @FindBy(xpath = "//a[@id='managers-delete-btn']/i")
+    private WebElement managersDeleteButton;
+
+    @FindBy(xpath = "//div[@class = 'row'][1]//p")
+    private WebElement nameValue;
+
+    @FindBy(xpath = "//div[@class = 'row'][2]//p")
+    private WebElement phoneValue;
+
+    @FindBy(xpath = "//div[@class = 'row'][3]//p")
+    private WebElement skypeValue;
+
+    @FindBy(xpath = "//div[@class = 'row'][4]//p")
+    private WebElement emailValue;
+
     public ManagersPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    public void createNewManager() {
+    public Map<String,String> createNewManager() {
+        StringUtils stringUtils = new StringUtils();
         Duration duration = Duration.ofSeconds(10);
         WebDriverWait wait = new WebDriverWait(driver, duration);
         Actions actions = new Actions(driver);
@@ -91,7 +108,7 @@ public class ManagersPage {
         lastNameInput.sendKeys(generatedLastName);
         generatedData.put("Last name", generatedLastName);
         emailInput.click();
-        String generatedEmail = faker.internet().emailAddress();
+        String generatedEmail = stringUtils.generateRandomString(12);
         emailInput.sendKeys(generatedEmail);
         generatedData.put("Email", generatedEmail);
         departmentSelect.click();
@@ -106,14 +123,16 @@ public class ManagersPage {
         skypeInput.sendKeys(generatedSkype);
         generatedData.put("Skype", generatedSkype);
         wait.until(ExpectedConditions.visibilityOf(submitButton));
+        actions.moveToElement(submitButton).perform();
         submitButton.click();
-
-        for (Map.Entry<String, String> entry : generatedData.entrySet()) {
-            System.out.println(entry.getKey() + " : " + entry.getValue());
+        String combinedName =  generatedData.get("First name")+" " + generatedData.get("Last name");
+        generatedData.put("Name",combinedName);
+        return generatedData;
         }
-        }
 
-        public void findManager(){
+        public Map<String,String> findManager() {
+            ManagersPage managersPage = new ManagersPage(driver);
+            Actions actions = new Actions(driver);
             Duration duration = Duration.ofSeconds(10);
             WebDriverWait wait = new WebDriverWait(driver, duration);
             wait.until((ExpectedConditions.visibilityOf(firstNameSearchInput)));
@@ -124,11 +143,18 @@ public class ManagersPage {
             String lastNameValue = generatedData.get("Last name");
             lastNameSearchInput.sendKeys(lastNameValue);
             searchManagerFilterButton.click();
-            wait.until(ExpectedConditions.visibilityOf(searchManagersResult));
+            wait.until(ExpectedConditions.elementToBeClickable(searchManagersResult));
+            actions.moveToElement(searchManagersResult).perform();
             searchManagersResult.click();
             wait.until(ExpectedConditions.visibilityOf(managerDetailsBackToListButton));
-            Map<String,String> fieldValues = new HashMap<>();
-            //String nameFieldValue =
-            //fieldValues.put("Name",)
+            String nameFieldValue = nameValue.getText();
+            fieldValues.put("Name",nameFieldValue);
+            String phoneFieldValue = phoneValue.getText();
+            fieldValues.put("Phone",phoneFieldValue);
+            String skypeFieldValue = skypeValue.getText();
+            fieldValues.put("Skype",skypeFieldValue);
+            String emailFieldValue = emailValue.getText().replaceAll("com.*","com");;
+            fieldValues.put("Email",emailFieldValue);
+            return fieldValues;
         }
     }
