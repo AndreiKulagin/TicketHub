@@ -125,8 +125,6 @@ public class ManagersPage {
         wait.until(ExpectedConditions.visibilityOf(submitButton));
         actions.moveToElement(submitButton).perform();
         submitButton.click();
-        String combinedName =  generatedData.get("First name")+" " + generatedData.get("Last name");
-        generatedData.put("Name",combinedName);
         return generatedData;
         }
 
