@@ -2,24 +2,12 @@ package pageobjects;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-import com.github.javafaker.Faker;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import utils.StringUtils;
-
-import java.time.Duration;
-import java.util.HashMap;
 import java.util.Map;
 
-public class ManagersPage {
-
-    private WebDriver driver;
-    Map<String, String> generatedData = new HashMap<>();
-    Map<String,String> fieldValues = new HashMap<>();
+public class ManagersPage extends BasePage {
 
     @FindBy(xpath = "//a[@id = 'menu-managers']")
     private WebElement managersMenuButton;
@@ -85,41 +73,35 @@ public class ManagersPage {
     private WebElement emailValue;
 
     public ManagersPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+        super(driver);
     }
 
     public Map<String,String> createNewManager() {
-        StringUtils stringUtils = new StringUtils();
-        Duration duration = Duration.ofSeconds(10);
-        WebDriverWait wait = new WebDriverWait(driver, duration);
-        Actions actions = new Actions(driver);
         wait.until(ExpectedConditions.visibilityOf(createNewTicketButton));
         actions.moveToElement(managersMenuButton).perform();
         managersMenuButton.click();
         newManagerButton.click();
         wait.until(ExpectedConditions.visibilityOf(firstNameInput));
-        Faker faker = new Faker();
-        String generatedFirstName = faker.name().firstName();
+        String generatedFirstName = manager.generateFirstName();
         firstNameInput.sendKeys(generatedFirstName);
         generatedData.put("First name", generatedFirstName);
         lastNameInput.click();
-        String generatedLastName = faker.name().lastName();
+        String generatedLastName = manager.generateLastName();
         lastNameInput.sendKeys(generatedLastName);
         generatedData.put("Last name", generatedLastName);
         emailInput.click();
-        String generatedEmail = stringUtils.generateRandomString(12);
+        String generatedEmail = manager.generateEmail();
         emailInput.sendKeys(generatedEmail);
         generatedData.put("Email", generatedEmail);
         departmentSelect.click();
         wait.until((ExpectedConditions.visibilityOf(departmentOptionDepoButton)));
         departmentOptionDepoButton.click();
         phoneInput.click();
-        String generatedPhoneNumber = faker.phoneNumber().cellPhone();
-        phoneInput.sendKeys(generatedPhoneNumber);
-        generatedData.put("Phone", generatedPhoneNumber);
+        String generatedPhone = manager.generatePhone();
+        phoneInput.sendKeys(generatedPhone);
+        generatedData.put("Phone", generatedPhone);
         skypeInput.click();
-        String generatedSkype = faker.lorem().characters(10);
+        String generatedSkype = manager.generateSkype();
         skypeInput.sendKeys(generatedSkype);
         generatedData.put("Skype", generatedSkype);
         wait.until(ExpectedConditions.visibilityOf(submitButton));
@@ -129,10 +111,6 @@ public class ManagersPage {
         }
 
         public Map<String,String> findManager() {
-            ManagersPage managersPage = new ManagersPage(driver);
-            Actions actions = new Actions(driver);
-            Duration duration = Duration.ofSeconds(10);
-            WebDriverWait wait = new WebDriverWait(driver, duration);
             wait.until((ExpectedConditions.visibilityOf(firstNameSearchInput)));
             firstNameSearchInput.click();
             String firstNameValue = generatedData.get("First name");
