@@ -1,8 +1,12 @@
 package utils;
 
+import com.github.javafaker.Faker;
+
 import java.util.Random;
 
 public class StringUtils {
+
+    Faker faker = new Faker();
 
     public String generateRandomString(int length) {
         String allowedChars = "abcdefghijklmnopqrstuvwxyz0123456789";
