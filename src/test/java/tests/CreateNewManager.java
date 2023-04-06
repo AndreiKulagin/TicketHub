@@ -1,5 +1,6 @@
 package tests;
 
+import model.Manager;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import pageobjects.ManagersPage;
@@ -11,12 +12,13 @@ public class CreateNewManager extends BaseUiTest {
     @Test
     public void createNewManager()  {
         ManagersPage managersPage = new ManagersPage(driver);
-        Map<String,String> generatedData = managersPage.createNewManager();
-        Map<String,String> filedValues = managersPage.findManager();
-        String combinedName =  generatedData.get("First name")+" " + generatedData.get("Last name");
-        generatedData.put("Name",combinedName);
-        generatedData.remove("First name");
-        generatedData.remove("Last name");
-        Assertions.assertEquals(generatedData,filedValues);
+        Manager manager = new Manager(driver);
+        Map<String,String> generatedManager = manager.getRandomManager();
+        Map<String,String> filedValues = managersPage.findManager((generatedManager));
+        String combinedName =  generatedManager.get("First name")+" " + generatedManager.get("Last name");
+        generatedManager.put("Name",combinedName);
+        generatedManager.remove("First name");
+        generatedManager.remove("Last name");
+        Assertions.assertEquals(generatedManager,filedValues);
     }
 }

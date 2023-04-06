@@ -37,6 +37,7 @@ public class BaseUiTest {
         System.setProperty("webdriver.http.factory", "jdk-http-client");
     }
 
+
     @BeforeEach
     public void setUp() throws IOException {
         Properties props = new Properties();
