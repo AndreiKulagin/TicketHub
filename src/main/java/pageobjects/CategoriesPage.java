@@ -12,7 +12,6 @@ public class CategoriesPage extends BasePage{
     private WebElement categoriesMenu;
 
     public CategoriesPage(WebDriver driver) {
-
         super(driver);
     }
 }

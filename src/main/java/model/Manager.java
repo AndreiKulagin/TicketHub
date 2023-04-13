@@ -44,17 +44,14 @@ public class Manager extends BasePage {
     private WebElement submitButton;
 
     public Manager(WebDriver driver) {
-
         super(driver);
     }
 
     public String generateFirstName(){
-
         return faker.name().firstName();
     }
 
     public String generateLastName() {
-
         return faker.name().lastName();
     }
 
