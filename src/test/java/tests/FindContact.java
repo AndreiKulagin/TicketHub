@@ -9,6 +9,6 @@ public class FindContact extends BaseUiTest {
     @Test
     public void findManager(){
         ContactsPage contactsPage = new ContactsPage(driver);
-        contactsPage.findManager();
+        contactsPage.findContact();
     }
 }
