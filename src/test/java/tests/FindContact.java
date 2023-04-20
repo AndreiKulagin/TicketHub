@@ -7,7 +7,7 @@ import pageobjects.ContactsPage;
 public class FindContact extends BaseUiTest {
 
     @Test
-    public void findManager(){
+    public void findContact(){
         ContactsPage contactsPage = new ContactsPage(driver);
         contactsPage.findContact();
     }
