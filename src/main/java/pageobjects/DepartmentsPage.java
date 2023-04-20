@@ -4,10 +4,23 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class DepartmentsPage {
 
     private WebDriver driver;
+    private String title;
+    private String website;
+    private String email;
+    private String phone;
+    private String skype;
+    private String country;
+    private String city;
+    private String street;
+    private Integer building;
+    private String zipcode;
+    private Integer roomNumber;
 
     @FindBy(id = "menu-departments")
     private WebElement departmentsMenu;
@@ -30,14 +43,22 @@ public class DepartmentsPage {
     @FindBy(xpath = "//input[@id = 'skype']")
     private WebElement skypeInput;
 
-    public DepartmentsPage(WebDriver driver) {
+    public DepartmentsPage(String title, String website, String email, String phone, String skype, String country, String city, String street, Integer building, String zipcode, Integer roomNumber,WebDriver driver) {
+        this.title = title;
+        this.website = website;
+        this.email = email;
+        this.phone = phone;
+        this.skype = skype;
+        this.country = country;
+        this.city = city;
+        this.street = street;
+        this.building = building;
+        this.zipcode = zipcode;
+        this.roomNumber = roomNumber;
         this.driver = driver;
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(driver,this);
     }
 
-    public DepartmentsPage(String title, String website, String email, String phone, String skype, String country, String city, String street, Integer building, String zipcode, Integer roomNumber) {
-
-    }
 
     public static class Builder {
         private WebDriver driver;
@@ -113,28 +134,20 @@ public class DepartmentsPage {
         }
 
         public DepartmentsPage build() {
-            DepartmentsPage departmentsPage = new DepartmentsPage(driver);
-            departmentsPage.departmentsMenu.click();
-            departmentsPage.newDepartmentButton.click();
-            departmentsPage.inputTitle.click();
-            departmentsPage.inputTitle.sendKeys(title);
-            departmentsPage.additionalInfoButton.click();
-            departmentsPage.phoneInput.click();
-            departmentsPage.phoneInput.sendKeys(phone);
-            departmentsPage.skypeInput.click();
-            departmentsPage.skypeInput.sendKeys(skype);
-            return departmentsPage;
+            return new DepartmentsPage(title,website,email,phone,skype,country,city,street,building,zipcode,roomNumber,driver);
         }
     }
 
-        /*public void createNewDepartment(String titleName) {
+        public void createNewDepartment() {
             departmentsMenu.click();
             newDepartmentButton.click();
-            DepartmentsPage departmentsPage = new DepartmentsPage.Builder(driver)
-                    .setTitle("Andrei Kulagin")
-                    .setWebsite("")
-            inputTitle.sendKeys(titleName);
+            inputTitle.click();
+            inputTitle.sendKeys(title);
             additionalInfoButton.click();
+            phoneInput.click();
+            phoneInput.sendKeys(phone);
+            skypeInput.click();
+            skypeInput.sendKeys(skype);
             submitButton.click();
-        }*/
+        }
     }

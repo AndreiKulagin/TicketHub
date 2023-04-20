@@ -10,10 +10,14 @@ public class CreateNewDepartment extends BaseUiTest{
     @Test
     public void testCreateNewDepartment(){
       wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@id='create-new-ticket']")));
-      DepartmentsPage departmentsPage = new DepartmentsPage.Builder(driver)
-              .setTitle("Andrei Kulagin97")
-              .setPhone("55555")
-              .setSkype("kullagin@skype")
-              .build();
+
+        DepartmentsPage.Builder builder = new DepartmentsPage.Builder(driver)
+                .setTitle("Andrei Kulagin25")
+                .setPhone("1234567890")
+                .setSkype("new_department_skype");
+
+        DepartmentsPage departmentsPage = builder.build();
+        departmentsPage.createNewDepartment();
+
     }
 }
