@@ -2,57 +2,67 @@ package pageobjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class DashboardPage {
-    private final WebDriver driver;
+
+    private WebDriver driver;
 
     @FindBy(xpath = "//a[@id='menu-dashboard']")
     private WebElement dashboardMenu;
 
-    @FindBy(xpath = "//a[@id='company-additional-information'][1]") //div[contains(text(),'Deadline is over')]")
-    public WebElement companyAdditionalInformationButton;
+    @FindBy(xpath = "//*[@id='accordion7']/div")
+    private WebElement companyAdditionalInformationButton;
 
-    @FindBy(css = "button#dashboard-done")
-    public WebElement doneDeadlineButton;
+    @FindBy(xpath = "//button[@id='dashboard-done']")
+    private WebElement dashboardDoneButton;
 
-    public DashboardPage(WebDriver driver){
+    public DashboardPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
 
-        public List<String> getAllTitlesByCategory(String categoryName) throws InterruptedException {
+    public void getPageDeadlineIsOver() throws InterruptedException {
         dashboardMenu.click();
-
-        Actions action = new Actions(driver);
-        action.moveToElement(doneDeadlineButton).perform();
-        doneDeadlineButton.click();
-
+        Thread.sleep(2000);
+        Actions actions = new Actions(driver);
+        actions.moveToElement(dashboardDoneButton).perform();
+        Thread.sleep(2000);
+        dashboardDoneButton.click();
+        Thread.sleep(2000);
         companyAdditionalInformationButton.click();
-        Thread.sleep(10_000);
-
-        List<WebElement> rows = driver.findElements(By.xpath("//span[contains(text(), '" + categoryName + "')]//ancestor::tr//a[@id='ticket-block-title']"));
-
-        return rows.stream()
-                .map(WebElement::getText)
-                .collect(Collectors.toList());
+        Thread.sleep(2000);
     }
 
-    public List<String> getAllIdsWithPriorityP3() throws InterruptedException {
-        dashboardMenu.click();
-        companyAdditionalInformationButton.click();
-        Thread.sleep(10_000);
+    public void getAllTitlesWithCategoryDevelopment() throws InterruptedException {
+        getPageDeadlineIsOver();
+        List<WebElement> ticketTitles = driver.findElements(By.xpath("//span[contains(text(), 'Разработка')]//ancestor::tr//a[@id='ticket-block-title']"));
+        for (WebElement title : ticketTitles) {
+            String text = title.getText();
+            System.out.println(text);
+        }
+    }
 
-        List<WebElement> rows = driver.findElements(By.xpath("//td[contains(text(), 'P3')]//ancestor::tr/td[2]"));
+    public void getAllTitlesWithCategoryFinance() throws InterruptedException {
+        getPageDeadlineIsOver();
+        List<WebElement> ticketTitles = driver.findElements(By.xpath("//span[contains(text(), 'Финансы')]//ancestor::tr//a[@id='ticket-block-title']"));
+        for (WebElement title : ticketTitles) {
+            String text = title.getText();
+            System.out.println(text);
+        }
+    }
 
-        return rows.stream()
-                .map(WebElement::getText)
-                .collect(Collectors.toList());
+    public void getAllIdsWithPriorityP3() throws InterruptedException {
+        getPageDeadlineIsOver();
+        List<WebElement> ticketTitles = driver.findElements(By.xpath("//td[contains(text(), 'P3')]//ancestor::tr//td[2]"));
+        for (WebElement title : ticketTitles) {
+            String text = title.getText();
+            System.out.println(text);
+        }
     }
 }

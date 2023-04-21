@@ -5,32 +5,43 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>task1</artifactId>
+    <artifactId>aqa_project</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.8.1</version>
+            <version>5.9.2</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.8.1</version>
+            <version>5.9.2</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.8.0</version>
+            <version>4.8.1</version>
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-http-jdk-client</artifactId>
-            <version>4.8.0</version>
+            <version>4.8.1</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.slugify</groupId>
+            <artifactId>slugify</artifactId>
+            <version>3.0.2</version>
+        </dependency>
+
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -49,4 +60,11 @@
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+    <repositories>
+        <repository>
+            <id>clojars</id>
+            <name>clojars</name>
+            <url>https://repo.clojars.org/</url>
+        </repository>
+    </repositories>
 </project>
