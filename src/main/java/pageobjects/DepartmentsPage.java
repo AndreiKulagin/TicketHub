@@ -4,8 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class DepartmentsPage {
 
@@ -42,6 +40,18 @@ public class DepartmentsPage {
 
     @FindBy(xpath = "//input[@id = 'skype']")
     private WebElement skypeInput;
+
+    @FindBy(xpath = "//input[@id = 'website']")
+    private WebElement websiteInput;
+
+    @FindBy(xpath = "//input[@id = 'email']")
+    private WebElement emailInput;
+
+    @FindBy(xpath = "//input[@id = 'country']")
+    private WebElement countryInput;
+
+    @FindBy(xpath = "//input[@id = 'city']")
+    private WebElement cityInput;
 
     public DepartmentsPage(String title, String website, String email, String phone, String skype, String country, String city, String street, Integer building, String zipcode, Integer roomNumber,WebDriver driver) {
         this.title = title;
@@ -148,6 +158,14 @@ public class DepartmentsPage {
             phoneInput.sendKeys(phone);
             skypeInput.click();
             skypeInput.sendKeys(skype);
+            websiteInput.click();
+            websiteInput.sendKeys(website);
+            emailInput.click();
+            emailInput.sendKeys(email);
+            countryInput.click();
+            countryInput.sendKeys(country);
+            cityInput.click();
+            cityInput.sendKeys(city);
             submitButton.click();
         }
     }
