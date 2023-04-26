@@ -10,7 +10,6 @@ public class LoginTestChrome extends BaseUiTest{
 
     @Test
     public void testLogin() throws InterruptedException {
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@id='create-new-ticket']")));
         TicketsPage ticketsPage = new TicketsPage(driver);
         ticketsPage.getAllIds("Id");
         ticketsPage.getAllTitles("Title");

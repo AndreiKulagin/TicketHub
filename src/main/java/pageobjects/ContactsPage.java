@@ -44,7 +44,7 @@ public class ContactsPage extends BasePage{
         return this;
     }
 
-    public void findManager(){
+    public void findContact(){
         ContactsPage contactsPage = new ContactsPage(driver);
         contactsPage
                 .waitUntil(contactsMenu)

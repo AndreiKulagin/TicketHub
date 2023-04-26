@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pageobjects.Strategy_Pattern.CompaniesNewButtonClickStrategy;
 
 import java.time.Duration;
 
@@ -33,7 +34,7 @@ public class CompaniesPage {
     @FindBy(xpath = "//button[@id='create-new-ticket']")
     private WebElement createNewTicketButton;
 
-    public CompaniesPage(WebDriver driver){
+    public CompaniesPage(WebDriver driver, CompaniesNewButtonClickStrategy companiesNewButtonClickStrategy){
         this.driver = driver;
         PageFactory.initElements(driver,this);
     }

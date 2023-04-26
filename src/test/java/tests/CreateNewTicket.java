@@ -9,7 +9,6 @@ public class CreateNewTicket extends BaseUiTest{
 
     @Test
     public void testCreateNewTicket(){
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@id='create-new-ticket']")));
         TicketsPage ticketsPage = new TicketsPage(driver);
         ticketsPage.createNewTicket("Andrei Kulagins","Test");
     }

@@ -7,8 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import pageobjects.MainPage;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -22,7 +21,8 @@ public class BaseUiTest {
     protected String url;
     protected String username;
     protected String password;
-    protected WebDriverWait wait;
+    private MainPage mainPage;
+
     private static final String OPERATION_SYSTEM = System.getProperty("os.name");
 
     @BeforeAll
@@ -37,7 +37,6 @@ public class BaseUiTest {
         System.setProperty("webdriver.http.factory", "jdk-http-client");
     }
 
-
     @BeforeEach
     public void setUp() throws IOException {
         Properties props = new Properties();
@@ -49,13 +48,13 @@ public class BaseUiTest {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
         driver = new ChromeDriver(options);
-        Duration duration = Duration.ofSeconds(30);
-        wait = new WebDriverWait(driver, duration);
         driver.get(url);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("username")));
         driver.findElement(By.id("username")).sendKeys(username);
         driver.findElement(By.id("password")).sendKeys(password);
         driver.findElement(By.id("login-signin")).click();
+        Duration duration = Duration.ofSeconds(30);
+        mainPage = new MainPage(driver, duration);
+        mainPage.openPage();
     }
 
     @AfterEach
