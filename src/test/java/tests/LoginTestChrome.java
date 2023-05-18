@@ -1,10 +1,8 @@
 package tests;
 
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import pageobjects.DashboardPage;
 import pageobjects.TicketsPage;
 import org.junit.jupiter.api.*;
-import org.openqa.selenium.By;
 
 public class LoginTestChrome extends BaseUiTest{
 
