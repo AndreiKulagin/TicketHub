@@ -45,9 +45,9 @@ ORDER BY random()
 LIMIT 1;
 
 
-SELECT c.name, t.title, com.name, s.name
+SELECT c.name, t.title, c.name, s.name
 FROM category c
 JOIN ticket t ON c.id = t.category_id
 JOIN stage s ON t.stage_id = s.id
-JOIN company com ON t.company_ticket_id = com.id
+JOIN company с ON t.company_ticket_id = с.max_ticket_id
 WHERE c.name = 'YouTube' AND (s.name = 'OPEN' OR s.name = 'IN PROGRESS');
