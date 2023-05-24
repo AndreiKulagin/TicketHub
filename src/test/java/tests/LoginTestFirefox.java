@@ -1,4 +1,5 @@
 package tests;
+
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -27,14 +28,12 @@ public class LoginTestFirefox {
 
     @BeforeEach
     public void setUp() throws IOException {
-
         Properties props = new Properties();
         FileInputStream input = new FileInputStream("src/test/resources/login.properties");
         props.load(input);
         url = props.getProperty("url");
         username = props.getProperty("username");
         password = props.getProperty("password");
-
         driver = new FirefoxDriver();
     }
 
@@ -47,27 +46,20 @@ public class LoginTestFirefox {
         driver.findElement(By.id("username")).sendKeys(username);
         driver.findElement(By.id("password")).sendKeys(password);
         driver.findElement(By.id("login-signin")).click();
-
         Thread.sleep(5000);
-
         TicketsPage ticketsPage = new TicketsPage(driver);
-
         ticketsPage.getAllIds("Id");
         ticketsPage.getAllTitles("Title");
         ticketsPage.getAllAssignees("Assignee");
         ticketsPage.getAllStages("Stage");
-
         DashboardPage dashboardPage = new DashboardPage(driver);
-
         dashboardPage.getAllTitlesWithCategoryDevelopment();
         dashboardPage.getAllTitlesWithCategoryFinance();
         dashboardPage.getAllIdsWithPriorityP3();
-
     }
 
     @AfterEach
     public void tearDown() {
-
         driver.quit();
     }
 }

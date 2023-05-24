@@ -5,31 +5,101 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 public class TicketsPage {
 
     private WebDriver driver;
 
-    @FindBy(id = "menu-tickets")
-    private WebElement ticketsMenu;
+    @FindBy(xpath = "//button[@id='create-new-ticket']")
+    private WebElement newTicketButton;
 
-    @FindBy(xpath = "//th[[8]]]")
-    public WebElement idHeader;
+    @FindBy(xpath = "//input[@id='title']")
+    private WebElement inputTitle;
 
-    @FindBy(xpath = "//th[contains(text(),'Title')]")
-    public WebElement titleHeader;
+    @FindBy(xpath = "//textarea[@id='description']")
+    private WebElement textareaDescription;
 
-    @FindBy(xpath = "//th[contains(text(),'Assignee')]")
-    public WebElement assigneeHeader;
+    @FindBy(xpath = "//select[@id='categoryId']")
+    private WebElement selectCategoryButton;
 
-    @FindBy(xpath = "//th[contains(text(),'Stage')]")
-    public WebElement stageHeader;
+    @FindBy(xpath = "//select[@id='categoryId']/option[contains(text(),'Test')][1]")
+    private WebElement categoryOptionTestButton;
+
+    @FindBy(xpath = "//select[@id='stageId']")
+    private WebElement selectStageButton;
+
+    @FindBy(xpath = "//option[contains(text(),'DONE')]")
+    private WebElement stageOptionDoneButton;
+
+    @FindBy(xpath = "//select[@id='company']")
+    private WebElement companySelectButton;
+
+    @FindBy(xpath = "//select[@id='company']/option[contains(text(),'Kul')]")
+    private WebElement companyOptionKulButton;
+
+    @FindBy(xpath = "//select[@id='contactId']")
+    private WebElement contactSelectButton;
+
+    @FindBy(xpath = "//select[@id='contactId']/option[contains(text(),'Kul')]")
+    private WebElement contactOptionButton;
+
+    @FindBy(xpath = "//select[@id='priority']")
+    private WebElement prioritySelectButton;
+
+    @FindBy(xpath = "//select[@id='priority']/option[contains(text(),'P1')]")
+    private WebElement priorityOptionP1Button;
+
+    @FindBy(xpath = "//p-calendar[@id='done-deadline-date']/span/button/span[1]")
+    private WebElement doneDeadlineCalendarButton;
+
+    @FindBy(xpath = "//table/tbody/tr[5]/td[5]")
+    private WebElement calendarSelectDateButton;
+
+    @FindBy(xpath = "//select[@id='department']")
+    private WebElement departmentSelectButton;
+
+    @FindBy(xpath = "//select[@id='department']/option[contains(text(),'Managers')]")
+    private WebElement departmentOptionManagersButton;
+
+    @FindBy(xpath = "//button[@id='submit-btn']")
+    private WebElement submitButton;
 
     public TicketsPage(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver,this);
+    }
+
+    public void createNewTicket(String titleName,String textareaName) {
+        Duration duration = Duration.ofSeconds(10);
+        WebDriverWait wait = new WebDriverWait(driver,duration);
+        newTicketButton.click();
+        inputTitle.sendKeys(titleName);
+        textareaDescription.click();
+        textareaDescription.sendKeys(textareaName);
+        selectCategoryButton.click();
+        wait.until(ExpectedConditions.visibilityOf(categoryOptionTestButton));
+        categoryOptionTestButton.click();
+        selectStageButton.click();
+        wait.until(ExpectedConditions.visibilityOf(stageOptionDoneButton));
+        stageOptionDoneButton.click();
+        companySelectButton.click();
+        wait.until(ExpectedConditions.visibilityOf(companyOptionKulButton));
+        companyOptionKulButton.click();
+        contactSelectButton.click();
+        contactOptionButton.click();
+        prioritySelectButton.click();
+        priorityOptionP1Button.click();
+        doneDeadlineCalendarButton.click();
+        calendarSelectDateButton.click();
+        doneDeadlineCalendarButton.click();
+        departmentSelectButton.click();
+        departmentOptionManagersButton.click();
+        submitButton.click();
     }
 
     public void getAllIds(String columnTitle){
@@ -41,9 +111,7 @@ public class TicketsPage {
                 break;
             }
         }
-
         List<WebElement> neededColumn = driver.findElements(By.xpath("//table//tr/td[" + (neededColumnNumber + 1) + "]"));
-
         for(WebElement cell : neededColumn){
             System.out.println(cell.getText());
         }
@@ -58,9 +126,7 @@ public class TicketsPage {
                 break;
             }
         }
-
         List<WebElement> neededColumn = driver.findElements(By.xpath("//table//tr/td[" + (neededColumnNumber + 1) + "]"));
-
         for(WebElement cell : neededColumn){
             System.out.println(cell.getText());
         }
@@ -75,9 +141,7 @@ public class TicketsPage {
                 break;
             }
         }
-
         List<WebElement> neededColumn = driver.findElements(By.xpath("//table//tr/td[" + (neededColumnNumber + 1) + "]"));
-
         for(WebElement cell : neededColumn){
             System.out.println(cell.getText());
         }
@@ -92,9 +156,7 @@ public class TicketsPage {
                 break;
             }
         }
-
         List<WebElement> neededColumn = driver.findElements(By.xpath("//table//tr/td[" + (neededColumnNumber + 1) + "]"));
-
         for(WebElement cell : neededColumn){
             System.out.println(cell.getText());
         }
