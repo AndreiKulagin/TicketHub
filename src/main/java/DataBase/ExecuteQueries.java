@@ -1,6 +1,7 @@
 package DataBase;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -106,10 +107,26 @@ public class ExecuteQueries {
                 }
             }
 
+            List<Map<String, String>> TicketInformationQuery = database.executeQueryForList("SELECT t.title, t.description, t.priority, s.name AS stage, c.name AS category, CONCAT(con.first_name,' ',con.last_name) AS contact, com.name AS company\n" +
+                    "FROM ticket t\n" +
+                    "JOIN stage s ON t.stage_id = s.id\n" +
+                    "JOIN category c ON t.category_id=c.id\n" +
+                    "JOIN contact con ON t.contact_id=con.id\n" +
+                    "JOIN company com ON t.company_ticket_id = com.max_ticket_id\n" +
+                    "WHERE t.title = 'Samokat15';"+"\t\t");
+            for (Map<String, String> row : TicketInformationQuery) {
+                for (Map.Entry<String, String> entry : row.entrySet()) {
+                    String columnName = entry.getKey();
+                    String columnValue = entry.getValue();
+                    System.out.println(columnName + ": " + columnValue);
+                }
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             database.close();
         }
     }
+    //public HashMap<String,String>
 }
