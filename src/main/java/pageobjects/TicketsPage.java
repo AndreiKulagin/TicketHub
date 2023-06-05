@@ -2,7 +2,6 @@ package pageobjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -93,9 +92,6 @@ public class TicketsPage extends BasePage{
     @FindBy(xpath = "//select[@id='priority']")
     private WebElement prioritySelectButton;
 
-    @FindBy(xpath = "//select[@id='priority']/option[contains(text(),'P1')]")
-    private WebElement priorityOptionP1Button;
-
     @FindBy(xpath = "//p-calendar[@id='done-deadline-date']/span/button/span[1]")
     private WebElement doneDeadlineCalendarButton;
 
@@ -107,6 +103,11 @@ public class TicketsPage extends BasePage{
 
     @FindBy(xpath = "//button[@id='submit-btn']")
     private WebElement submitButton;
+
+    public WebElement selectPriorityOption(String priority){
+        String xpath = "//select[@id='priority']/option[contains(text(),'" + priority + "')]";
+        return driver.findElement(By.xpath(xpath));
+    }
 
     public WebElement selectCompanyOptionByPartialName(String companyName) {
         String xpath = "//select[@id='company']/option[contains(text(),'" + companyName + "')]";
