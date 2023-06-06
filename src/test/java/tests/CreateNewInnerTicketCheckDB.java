@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CreateNewInnerTicketCheckDB extends BaseUiTest{
     @Test
@@ -24,7 +24,6 @@ public class CreateNewInnerTicketCheckDB extends BaseUiTest{
                 "JOIN stage s ON t.stage_id = s.id\n" +
                 "JOIN category c ON t.category_id=c.id\n" +
                 "WHERE t.title = 'ManchesterUnited';"+"\t\t");
-        boolean isEqual = innerTicketValues.equals(innerTicketInformationQuery.get(0));
-        assertEquals(true,isEqual);
+        assertTrue(innerTicketValues.equals(innerTicketInformationQuery.get(0)));
     }
 }

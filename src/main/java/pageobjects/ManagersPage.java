@@ -5,9 +5,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
 import java.util.Map;
 
 public class ManagersPage extends BasePage {
+
+    @FindBy(xpath = "//a[@id = 'managers-delete-btn']")
+    private WebElement managersDeleteButton;
 
     @FindBy(xpath = "//input[@id ='search-manager-firstname']")
     private WebElement firstNameSearchInput;
@@ -40,27 +44,26 @@ public class ManagersPage extends BasePage {
         super(driver);
     }
 
-    public Map<String,String> findManager(Map<String, String> manager) {
+    public Map<String,String> findManager(Map<String, String> manager) throws InterruptedException {
             wait.until((ExpectedConditions.visibilityOf(firstNameSearchInput)));
             firstNameSearchInput.click();
-            String firstNameValue = manager.get("First name");
+            String firstNameValue = manager.get("first_name");
             firstNameSearchInput.sendKeys(firstNameValue);
             lastNameSearchInput.click();
-            String lastNameValue = manager.get("Last name");
+            String lastNameValue = manager.get("last_name");
             lastNameSearchInput.sendKeys(lastNameValue);
             searchManagerFilterButton.click();
+            Thread.sleep(2000);
             wait.until(ExpectedConditions.elementToBeClickable(searchManagersResult));
             actions.moveToElement(searchManagersResult).perform();
             searchManagersResult.click();
             wait.until(ExpectedConditions.visibilityOf(managerDetailsBackToListButton));
             String nameFieldValue = nameValue.getText();
-            fieldValues.put("Name",nameFieldValue);
+            fieldValues.put("name",nameFieldValue);
             String phoneFieldValue = phoneValue.getText();
-            fieldValues.put("Phone",phoneFieldValue);
+            fieldValues.put("phone",phoneFieldValue);
             String skypeFieldValue = skypeValue.getText();
-            fieldValues.put("Skype",skypeFieldValue);
-            String emailFieldValue = emailValue.getText().replaceAll("com.*","com");;
-            fieldValues.put("Email",emailFieldValue);
+            fieldValues.put("skype",skypeFieldValue);
             return fieldValues;
         }
     }

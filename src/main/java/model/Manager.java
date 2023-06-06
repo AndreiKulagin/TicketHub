@@ -75,34 +75,32 @@ public class Manager extends BasePage {
         return faker.phoneNumber().cellPhone();
         }
 
-    public Map<String,String> getRandomManager(){
+    public Map<String,String> getManager(String firstName,String lastName){
         wait.until(ExpectedConditions.visibilityOf(createNewTicketButton));
         actions.moveToElement(managersMenuButton).perform();
         managersMenuButton.click();
         newManagerButton.click();
         wait.until(ExpectedConditions.visibilityOf(firstNameInput));
-        String generatedFirstName = generateFirstName();
-        firstNameInput.sendKeys(generatedFirstName);
-        manager.put("First name", generatedFirstName);
+        firstNameInput.sendKeys(firstName);
+        manager.put("first_name",firstName);
         lastNameInput.click();
-        String generatedLastName = generateLastName();
-        lastNameInput.sendKeys(generatedLastName);
-        manager.put("Last name", generatedLastName);
+        lastNameInput.sendKeys(lastName);
+        manager.put("last_name",lastName);
         emailInput.click();
         String generatedEmail = generateEmail();
         emailInput.sendKeys(generatedEmail);
-        manager.put("Email", generatedEmail);
+        manager.put("email", generatedEmail);
         departmentSelect.click();
         wait.until((ExpectedConditions.visibilityOf(departmentOptionDepoButton)));
         departmentOptionDepoButton.click();
         phoneInput.click();
         String generatedPhone = generatePhone();
         phoneInput.sendKeys(generatedPhone);
-        manager.put("Phone", generatedPhone);
+        manager.put("phone", generatedPhone);
         skypeInput.click();
         String generatedSkype = generateSkype();
         skypeInput.sendKeys(generatedSkype);
-        manager.put("Skype", generatedSkype);
+        manager.put("skype", generatedSkype);
         wait.until(ExpectedConditions.visibilityOf(submitButton));
         actions.moveToElement(submitButton).perform();
         submitButton.click();

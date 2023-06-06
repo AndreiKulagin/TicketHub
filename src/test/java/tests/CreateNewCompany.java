@@ -2,13 +2,13 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 import pageobjects.CompaniesPage;
-import pageobjects.Strategy_Pattern.CompaniesNewButtonClickStrategy;
 
 public class CreateNewCompany extends BaseUiTest {
 
     @Test
-    public void testCreateNewCompany(){
-        CompaniesPage companiesPage = new CompaniesPage(driver,new CompaniesNewButtonClickStrategy());
-        companiesPage.createNewCompany("Kulagin");
+    public void testCreateNewCompany() throws InterruptedException {
+        CompaniesPage companiesPage = new CompaniesPage(driver);
+        companiesPage.createNewCompany("Sahsa15");
+        companiesPage.findCompany("Sahsa15");
     }
 }

@@ -4,18 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class TicketsPage extends BasePage{
-
-    private WebDriver driver;
 
     @FindBy(xpath = "//button[@id = 'new-inner-ticket']")
     private WebElement newInnerTicketButton;
@@ -141,20 +135,14 @@ public class TicketsPage extends BasePage{
 
     public TicketsPage(WebDriver driver) {
         super(driver);
-        this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        PageFactory.initElements(driver, this);
     }
 
     public void createNewTicket(String titleName,String textareaName,String companyName, String departmentName,String categoryName,String stageOption) throws InterruptedException {
-        Duration duration = Duration.ofSeconds(10);
-        WebDriverWait wait = new WebDriverWait(driver,duration);
         newTicketButton.click();
         inputTitle.sendKeys(titleName);
         textareaDescription.click();
         textareaDescription.sendKeys(textareaName);
         selectCategoryButton.click();
-        //wait.until(ExpectedConditions.visibilityOf(selectCategoryOption(categoryName)));
         Thread.sleep(2000);
         selectCategoryOption(categoryName).click();
         selectStageButton.click();
@@ -178,7 +166,6 @@ public class TicketsPage extends BasePage{
         textareaDescription.click();
         textareaDescription.sendKeys(descriptionArea);
         selectCategoryButton.click();
-        //wait.until(ExpectedConditions.visibilityOf(selectCategoryOption(categoryName)));
         Thread.sleep(2000);
         selectCategoryOption(categoryName).click();
         departmentSelectButton.click();
@@ -270,7 +257,6 @@ public class TicketsPage extends BasePage{
                             searchBarSubmit.click();
                             ticketsSearchResult.click();
                             Thread.sleep(2000);
-                            //wait.until(ExpectedConditions.visibilityOf(ticketsSearchResult));
                             getTicketsSearchResult(title).click();
                             Thread.sleep(2000);
     }
@@ -291,11 +277,6 @@ public class TicketsPage extends BasePage{
         String priorityInformation = ticketPriorityInformation.getText();
         ticketValues.put("priority",priorityInformation);
         ticketValues.put("title",title);
-
-        for (Map.Entry<String, String> entry : ticketValues.entrySet()) {
-            System.out.println(entry.getKey() + ": " + entry.getValue());
-        }
         return ticketValues;
-
     }
 }

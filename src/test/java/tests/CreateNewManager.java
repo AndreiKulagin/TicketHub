@@ -10,10 +10,10 @@ import java.util.Map;
 public class CreateNewManager extends BaseUiTest {
 
     @Test
-    public void createNewManager()  {
+    public void createNewManager() throws InterruptedException {
         ManagersPage managersPage = new ManagersPage(driver);
         Manager manager = new Manager(driver);
-        Map<String,String> generatedManager = manager.getRandomManager();
+        Map<String,String> generatedManager = manager.getManager("Andrei","Grigoshvili");
         Map<String,String> filedValues = managersPage.findManager((generatedManager));
         String combinedName =  generatedManager.get("First name")+" " + generatedManager.get("Last name");
         generatedManager.put("Name",combinedName);
