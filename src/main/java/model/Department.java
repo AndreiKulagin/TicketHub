@@ -84,7 +84,8 @@ public class Department {
         private String zipcode;
         private Integer roomNumber;
 
-        public Builder() {}
+        public Builder() {
+        }
 
         public Builder setTitle(String title) {
             this.title = title;

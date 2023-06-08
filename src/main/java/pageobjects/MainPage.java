@@ -12,12 +12,12 @@ public class MainPage {
     private WebDriverWait wait;
     private WebDriver driver;
 
-    public MainPage(WebDriver driver, Duration duration){
+    public MainPage(WebDriver driver, Duration duration) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, duration);
     }
 
-    public void openPage(){
+    public void openPage() {
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@id='create-new-ticket']")));
     }
 }

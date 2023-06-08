@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class ContactsPage extends BasePage{
+public class ContactsPage extends BasePage {
 
     @FindBy(id = "menu-contacts")
     private WebElement contactsMenu;
@@ -29,30 +29,30 @@ public class ContactsPage extends BasePage{
         super(driver);
     }
 
-    public ContactsPage clickButton(WebElement buttonName){
+    public ContactsPage clickButton(WebElement buttonName) {
         buttonName.click();
         return this;
     }
 
-    public ContactsPage fillInInput(WebElement inputName,String value){
+    public ContactsPage fillInInput(WebElement inputName, String value) {
         inputName.sendKeys(value);
         return this;
     }
 
-    public ContactsPage waitUntil(WebElement waitVisibilityOF){
+    public ContactsPage waitUntil(WebElement waitVisibilityOF) {
         wait.until(ExpectedConditions.visibilityOf(waitVisibilityOF));
         return this;
     }
 
-    public void findContact(){
+    public void findContact() {
         ContactsPage contactsPage = new ContactsPage(driver);
         contactsPage
                 .waitUntil(contactsMenu)
                 .clickButton(contactsMenu)
                 .clickButton(searchFirstNameInput)
-                .fillInInput(searchFirstNameInput,"Andrei")
+                .fillInInput(searchFirstNameInput, "Andrei")
                 .clickButton(searchLastNameInput)
-                .fillInInput(searchFirstNameInput,"Kul")
+                .fillInInput(searchFirstNameInput, "Kul")
                 .clickButton(searchContactButton)
                 .clickButton(searchContactResult);
     }
