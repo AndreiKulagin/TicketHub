@@ -41,7 +41,7 @@ public class LoginTestFirefox {
     public void testLogin() throws InterruptedException {
         Duration duration = Duration.ofSeconds(10);
         driver.get(url);
-        WebDriverWait wait = new WebDriverWait(driver,duration);
+        WebDriverWait wait = new WebDriverWait(driver, duration);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("username")));
         driver.findElement(By.id("username")).sendKeys(username);
         driver.findElement(By.id("password")).sendKeys(password);

@@ -26,7 +26,7 @@ public class CompaniesPage extends BasePage {
     @FindBy(id = "menu-companies")
     private WebElement companiesMenu;
 
-    @FindBy(id ="new-company")
+    @FindBy(id = "new-company")
     private WebElement newCompanyButton;
 
     @FindBy(xpath = "//input[@id='name']")
@@ -35,7 +35,7 @@ public class CompaniesPage extends BasePage {
     @FindBy(xpath = "//button[@id='company-submit-btn']")
     private WebElement submitButton;
 
-    @FindBy(xpath ="//tr[2]//td[5]//a")
+    @FindBy(xpath = "//tr[2]//td[5]//a")
     private WebElement deleteButton;
 
     @FindBy(xpath = "//button[@id='create-new-ticket']")
@@ -44,7 +44,7 @@ public class CompaniesPage extends BasePage {
     @FindBy(xpath = "//span[@class = 'ui-tabview-title' and contains(text(), 'Company details')]")
     private WebElement companyDetailsTab;
 
-    public WebElement getCompanySearchResult(String companyName){
+    public WebElement getCompanySearchResult(String companyName) {
         String xpath = "//a[contains(text(), '" + companyName + "')]";
         return driver.findElement(By.xpath(xpath));
     }
@@ -56,7 +56,7 @@ public class CompaniesPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public void createNewCompany(String companyName){
+    public void createNewCompany(String companyName) {
         wait.until(ExpectedConditions.visibilityOf(createNewTicketButton));
         Actions actions = new Actions(driver);
         actions.moveToElement(companiesMenu).perform();
@@ -77,12 +77,13 @@ public class CompaniesPage extends BasePage {
         getCompanySearchResult(companyName).click();
         wait.until(ExpectedConditions.visibilityOf(companyDetailsTab));
     }
-    public HashMap<String,String> getAllInformationAboutCompany(){
-        HashMap<String,String> companyValues = new HashMap<>();
+
+    public HashMap<String, String> getAllInformationAboutCompany() {
+        HashMap<String, String> companyValues = new HashMap<>();
         String companyName = companyNameInformation.getText();
-        companyValues.put("name",companyName);
+        companyValues.put("name", companyName);
         String prefixInformation = ticketsPrefixInformation.getText();
-        companyValues.put("ticket_prefix",prefixInformation);
+        companyValues.put("ticket_prefix", prefixInformation);
         return companyValues;
     }
 }

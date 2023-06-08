@@ -16,6 +16,6 @@ public class StringUtils {
             int index = (int) (rnd.nextFloat() * allowedChars.length());
             sb.append(allowedChars.charAt(index));
         }
-        return sb+"@example.com";
+        return sb + "@example.com";
     }
 }

@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.HashMap;
 import java.util.List;
 
-public class TicketsPage extends BasePage{
+public class TicketsPage extends BasePage {
 
     @FindBy(xpath = "//button[@id = 'new-inner-ticket']")
     private WebElement newInnerTicketButton;
@@ -98,7 +98,7 @@ public class TicketsPage extends BasePage{
     @FindBy(xpath = "//button[@id='submit-btn']")
     private WebElement submitButton;
 
-    public WebElement selectPriorityOption(String priority){
+    public WebElement selectPriorityOption(String priority) {
         String xpath = "//select[@id='priority']/option[contains(text(),'" + priority + "')]";
         return driver.findElement(By.xpath(xpath));
     }
@@ -108,27 +108,27 @@ public class TicketsPage extends BasePage{
         return driver.findElement(By.xpath(xpath));
     }
 
-    public WebElement selectDepartmentOption(String departmentName){
+    public WebElement selectDepartmentOption(String departmentName) {
         String xpath = "//select[@id='department']/option[contains(text(),'" + departmentName + "')]";
         return driver.findElement(By.xpath(xpath));
     }
 
-    public WebElement selectCategoryOption(String categoryName){
-        String xpath = "//select[@id='categoryId']/option[contains(text(),'" +categoryName + "')]";
+    public WebElement selectCategoryOption(String categoryName) {
+        String xpath = "//select[@id='categoryId']/option[contains(text(),'" + categoryName + "')]";
         return driver.findElement(By.xpath(xpath));
     }
 
-    public WebElement selectStageOption(String stageOption){
+    public WebElement selectStageOption(String stageOption) {
         String xpath = "//option[contains(text(),'" + stageOption + "')]";
         return driver.findElement(By.xpath(xpath));
     }
 
-    public WebElement getTicketsSearchResult(String ticketSearchResult){
+    public WebElement getTicketsSearchResult(String ticketSearchResult) {
         String xpath = "//h4[contains(text(), '" + ticketSearchResult + "')]";
         return driver.findElement(By.xpath(xpath));
     }
 
-    public WebElement getStageInformation(String stageInformation){
+    public WebElement getStageInformation(String stageInformation) {
         String xpath = "//td[contains(text(),'" + stageInformation + "')]";
         return driver.findElement(By.xpath(xpath));
     }
@@ -137,7 +137,7 @@ public class TicketsPage extends BasePage{
         super(driver);
     }
 
-    public void createNewTicket(String titleName,String textareaName,String companyName, String departmentName,String categoryName,String stageOption) throws InterruptedException {
+    public void createNewTicket(String titleName, String textareaName, String companyName, String departmentName, String categoryName, String stageOption) throws InterruptedException {
         newTicketButton.click();
         inputTitle.sendKeys(titleName);
         textareaDescription.click();
@@ -158,7 +158,7 @@ public class TicketsPage extends BasePage{
         submitButton.click();
     }
 
-    public void createNewInnerTicket(String titleName,String descriptionArea,String departmentName,String categoryName) throws InterruptedException {
+    public void createNewInnerTicket(String titleName, String descriptionArea, String departmentName, String categoryName) throws InterruptedException {
         newTicketButton.click();
         wait.until(ExpectedConditions.visibilityOf(newInnerTicketButton));
         newInnerTicketButton.click();
@@ -173,110 +173,110 @@ public class TicketsPage extends BasePage{
         submitButton.click();
     }
 
-    public HashMap<String, String> getAllInformationAboutInnerTicket(String stageInformation, String title){
-        HashMap<String,String> InnerTicketValues = new HashMap<>();
+    public HashMap<String, String> getAllInformationAboutInnerTicket(String stageInformation, String title) {
+        HashMap<String, String> InnerTicketValues = new HashMap<>();
         String ticketDescription = ticketDescriptionValue.getText();
-        InnerTicketValues.put("description",ticketDescription);
+        InnerTicketValues.put("description", ticketDescription);
         ticketInformationTab.click();
         String stageInformationAboutTicket = ticketStageInformation.getText();
-        InnerTicketValues.put("stage",stageInformationAboutTicket);
+        InnerTicketValues.put("stage", stageInformationAboutTicket);
         String categoryInformation = innerTicketCategoryInformation.getText();
-        InnerTicketValues.put("category",categoryInformation);
-        InnerTicketValues.put("title",title);
+        InnerTicketValues.put("category", categoryInformation);
+        InnerTicketValues.put("title", title);
         return InnerTicketValues;
     }
 
-    public void getAllIds(String columnTitle){
+    public void getAllIds(String columnTitle) {
         List<WebElement> headers = driver.findElements(By.xpath("//th"));
         int neededColumnNumber = 0;
-        for(int i=0; i< headers.size(); i++){
+        for (int i = 0; i < headers.size(); i++) {
             if (headers.get(i).getText().contains(columnTitle)) {
                 neededColumnNumber = i;
                 break;
             }
         }
         List<WebElement> neededColumn = driver.findElements(By.xpath("//table//tr/td[" + (neededColumnNumber + 1) + "]"));
-        for(WebElement cell : neededColumn){
+        for (WebElement cell : neededColumn) {
             System.out.println(cell.getText());
         }
     }
 
-    public void getAllTitles(String columnTitle){
+    public void getAllTitles(String columnTitle) {
         List<WebElement> headers = driver.findElements(By.xpath("//th"));
         int neededColumnNumber = 0;
-        for(int i=0; i< headers.size(); i++){
+        for (int i = 0; i < headers.size(); i++) {
             if (headers.get(i).getText().contains(columnTitle)) {
                 neededColumnNumber = i;
                 break;
             }
         }
         List<WebElement> neededColumn = driver.findElements(By.xpath("//table//tr/td[" + (neededColumnNumber + 1) + "]"));
-        for(WebElement cell : neededColumn){
+        for (WebElement cell : neededColumn) {
             System.out.println(cell.getText());
         }
     }
 
-    public void getAllAssignees(String columnTitle){
+    public void getAllAssignees(String columnTitle) {
         List<WebElement> headers = driver.findElements(By.xpath("//th"));
         int neededColumnNumber = 0;
-        for(int i=0; i< headers.size(); i++){
+        for (int i = 0; i < headers.size(); i++) {
             if (headers.get(i).getText().contains(columnTitle)) {
                 neededColumnNumber = i;
                 break;
             }
         }
         List<WebElement> neededColumn = driver.findElements(By.xpath("//table//tr/td[" + (neededColumnNumber + 1) + "]"));
-        for(WebElement cell : neededColumn){
+        for (WebElement cell : neededColumn) {
             System.out.println(cell.getText());
         }
     }
 
-    public void getAllStages(String columnTitle){
+    public void getAllStages(String columnTitle) {
         List<WebElement> headers = driver.findElements(By.xpath("//th"));
         int neededColumnNumber = 0;
-        for(int i=0; i< headers.size(); i++){
+        for (int i = 0; i < headers.size(); i++) {
             if (headers.get(i).getText().contains(columnTitle)) {
                 neededColumnNumber = i;
                 break;
             }
         }
         List<WebElement> neededColumn = driver.findElements(By.xpath("//table//tr/td[" + (neededColumnNumber + 1) + "]"));
-        for(WebElement cell : neededColumn){
+        for (WebElement cell : neededColumn) {
             System.out.println(cell.getText());
         }
     }
 
     public void findTicket(String title) throws InterruptedException {
-                            wait.until(ExpectedConditions.visibilityOf(newTicketButton));
-                            Thread.sleep(2000);
-                            alertCloseButton.click();
-                            Thread.sleep(2000);
-                            inputSearchBar.click();
-                            Thread.sleep(2000);
-                            inputSearchBar.sendKeys(title);
-                            searchBarSubmit.click();
-                            ticketsSearchResult.click();
-                            Thread.sleep(2000);
-                            getTicketsSearchResult(title).click();
-                            Thread.sleep(2000);
+        wait.until(ExpectedConditions.visibilityOf(newTicketButton));
+        Thread.sleep(2000);
+        alertCloseButton.click();
+        Thread.sleep(2000);
+        inputSearchBar.click();
+        Thread.sleep(2000);
+        inputSearchBar.sendKeys(title);
+        searchBarSubmit.click();
+        ticketsSearchResult.click();
+        Thread.sleep(2000);
+        getTicketsSearchResult(title).click();
+        Thread.sleep(2000);
     }
 
-    public HashMap<String,String> getAllInformationAboutTicket(String stageInformation,String title){
-    HashMap<String,String> ticketValues = new HashMap<>();
+    public HashMap<String, String> getAllInformationAboutTicket(String stageInformation, String title) {
+        HashMap<String, String> ticketValues = new HashMap<>();
         String ticketDescription = ticketDescriptionValue.getText();
-        ticketValues.put("description",ticketDescription);
+        ticketValues.put("description", ticketDescription);
         ticketInformationTab.click();
         String stageInformationAboutTicket = ticketStageInformation.getText();
-        ticketValues.put("stage",stageInformationAboutTicket);
+        ticketValues.put("stage", stageInformationAboutTicket);
         String contactInformation = ticketContactInformation.getText();
-        ticketValues.put("contact",contactInformation);
+        ticketValues.put("contact", contactInformation);
         String categoryInformation = ticketCategoryInformation.getText();
-        ticketValues.put("category",categoryInformation);
+        ticketValues.put("category", categoryInformation);
         String companyInformation = ticketCompanyInformation.getText();
-        ticketValues.put("company",companyInformation);
+        ticketValues.put("company", companyInformation);
         String priorityInformation = ticketPriorityInformation.getText();
-        ticketValues.put("priority",priorityInformation);
-        ticketValues.put("title",title);
+        ticketValues.put("priority", priorityInformation);
+        ticketValues.put("title", title);
         return ticketValues;
     }
 }

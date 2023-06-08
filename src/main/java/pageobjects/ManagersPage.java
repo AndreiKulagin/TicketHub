@@ -44,26 +44,26 @@ public class ManagersPage extends BasePage {
         super(driver);
     }
 
-    public Map<String,String> findManager(Map<String, String> manager) throws InterruptedException {
-            wait.until((ExpectedConditions.visibilityOf(firstNameSearchInput)));
-            firstNameSearchInput.click();
-            String firstNameValue = manager.get("first_name");
-            firstNameSearchInput.sendKeys(firstNameValue);
-            lastNameSearchInput.click();
-            String lastNameValue = manager.get("last_name");
-            lastNameSearchInput.sendKeys(lastNameValue);
-            searchManagerFilterButton.click();
-            Thread.sleep(2000);
-            wait.until(ExpectedConditions.elementToBeClickable(searchManagersResult));
-            actions.moveToElement(searchManagersResult).perform();
-            searchManagersResult.click();
-            wait.until(ExpectedConditions.visibilityOf(managerDetailsBackToListButton));
-            String nameFieldValue = nameValue.getText();
-            fieldValues.put("name",nameFieldValue);
-            String phoneFieldValue = phoneValue.getText();
-            fieldValues.put("phone",phoneFieldValue);
-            String skypeFieldValue = skypeValue.getText();
-            fieldValues.put("skype",skypeFieldValue);
-            return fieldValues;
-        }
+    public Map<String, String> findManager(Map<String, String> manager) throws InterruptedException {
+        wait.until((ExpectedConditions.visibilityOf(firstNameSearchInput)));
+        firstNameSearchInput.click();
+        String firstNameValue = manager.get("first_name");
+        firstNameSearchInput.sendKeys(firstNameValue);
+        lastNameSearchInput.click();
+        String lastNameValue = manager.get("last_name");
+        lastNameSearchInput.sendKeys(lastNameValue);
+        searchManagerFilterButton.click();
+        Thread.sleep(2000);
+        wait.until(ExpectedConditions.elementToBeClickable(searchManagersResult));
+        actions.moveToElement(searchManagersResult).perform();
+        searchManagersResult.click();
+        wait.until(ExpectedConditions.visibilityOf(managerDetailsBackToListButton));
+        String nameFieldValue = nameValue.getText();
+        fieldValues.put("name", nameFieldValue);
+        String phoneFieldValue = phoneValue.getText();
+        fieldValues.put("phone", phoneFieldValue);
+        String skypeFieldValue = skypeValue.getText();
+        fieldValues.put("skype", skypeFieldValue);
+        return fieldValues;
     }
+}

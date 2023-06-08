@@ -11,7 +11,7 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class CreateNewCompanyCheckDB extends BaseUiTest{
+public class CreateNewCompanyCheckDB extends BaseUiTest {
 
     @Test
     public void createNewCompanyCheckDB() throws InterruptedException, SQLException {
@@ -21,7 +21,7 @@ public class CreateNewCompanyCheckDB extends BaseUiTest{
         HashMap<String, String> companyValues = companiesPage.getAllInformationAboutCompany();
         DataBase database = new DataBase();
         List<Map<String, String>> companyInformationQuery = database.executeQueryForList("SELECT name, ticket_prefix FROM company\n" +
-                "WHERE name = 'BazanovAlex3535';"+"\t\t");
+                "WHERE name = 'BazanovAlex3535';" + "\t\t");
         assertTrue(companyValues.equals(companyInformationQuery.get(0)));
     }
 }

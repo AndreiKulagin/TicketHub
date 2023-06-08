@@ -11,11 +11,11 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class CreateNewInnerTicketCheckDB extends BaseUiTest{
+public class CreateNewInnerTicketCheckDB extends BaseUiTest {
     @Test
     public void testCreateNewInnerTicketWithDB() throws InterruptedException, SQLException {
         TicketsPage ticketsPage = new TicketsPage(driver);
-        ticketsPage.createNewInnerTicket("ManchesterUnited","MU","Call Center","Events");
+        ticketsPage.createNewInnerTicket("ManchesterUnited", "MU", "Call Center", "Events");
         ticketsPage.findTicket("ManchesterUnited");
         HashMap<String, String> innerTicketValues = ticketsPage.getAllInformationAboutInnerTicket("IN PROGRESS", "ManchesterUnited");
         DataBase database = new DataBase();
@@ -23,7 +23,7 @@ public class CreateNewInnerTicketCheckDB extends BaseUiTest{
                 "FROM ticket t\n" +
                 "JOIN stage s ON t.stage_id = s.id\n" +
                 "JOIN category c ON t.category_id=c.id\n" +
-                "WHERE t.title = 'ManchesterUnited';"+"\t\t");
+                "WHERE t.title = 'ManchesterUnited';" + "\t\t");
         assertTrue(innerTicketValues.equals(innerTicketInformationQuery.get(0)));
     }
 }

@@ -1,4 +1,5 @@
 package tests;
+
 import DataBase.DataBase;
 import org.junit.jupiter.api.Test;
 import pageobjects.TicketsPage;
@@ -10,11 +11,11 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class CreateNewTicketCheckDB extends BaseUiTest{
+public class CreateNewTicketCheckDB extends BaseUiTest {
     @Test
     public void testCreateNewTicketWithDB() throws InterruptedException, SQLException {
         TicketsPage ticketsPage = new TicketsPage(driver);
-        ticketsPage.createNewTicket("Borodina555","RedBull","Tania","Managers","YouTube","OPEN");
+        ticketsPage.createNewTicket("Borodina555", "RedBull", "Tania", "Managers", "YouTube", "OPEN");
         ticketsPage.findTicket("Borodina555");
         HashMap<String, String> ticketValues = ticketsPage.getAllInformationAboutTicket("OPEN", "Borodina555");
         DataBase database = new DataBase();
@@ -24,7 +25,7 @@ public class CreateNewTicketCheckDB extends BaseUiTest{
                 "JOIN category c ON t.category_id=c.id\n" +
                 "JOIN contact con ON t.contact_id=con.id\n" +
                 "JOIN company com ON t.company_ticket_id = com.max_ticket_id\n" +
-                "WHERE t.title = 'Borodina555';"+"\t\t");
+                "WHERE t.title = 'Borodina555';" + "\t\t");
         assertTrue(ticketValues.equals(TicketInformationQuery.get(0)));
     }
 }

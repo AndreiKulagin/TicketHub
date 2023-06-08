@@ -4,10 +4,10 @@ import model.Department;
 import org.junit.jupiter.api.Test;
 import pageobjects.DepartmentsPage;
 
-public class CreateNewDepartment extends BaseUiTest{
+public class CreateNewDepartment extends BaseUiTest {
 
     @Test
-    public void testCreateNewDepartment(){
+    public void testCreateNewDepartment() {
         Department department = new Department.Builder()
                 .setTitle("Andrei Kulagin555")
                 .setPhone("1234567890")

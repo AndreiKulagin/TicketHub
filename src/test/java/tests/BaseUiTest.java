@@ -27,9 +27,8 @@ public class BaseUiTest {
 
     @BeforeAll
     public static void setUpClass() {
-        String driverDir = System.getProperty("user.home").replaceAll("\\\\", "/") +
-                "/.m2/repository/webdriver/chrome/";
-        if(OPERATION_SYSTEM.toLowerCase(Locale.ROOT).contains("windows")) {
+        String driverDir = System.getProperty("user.home").replaceAll("\\\\", "/") + "/.m2/repository/webdriver/chrome/";
+        if (OPERATION_SYSTEM.toLowerCase(Locale.ROOT).contains("windows")) {
             System.setProperty("webdriver.chrome.driver", driverDir + "chromedriver.exe");
         } else {
             System.setProperty("webdriver.chrome.driver", driverDir + "chromedriver");

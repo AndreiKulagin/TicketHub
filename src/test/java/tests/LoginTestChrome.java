@@ -4,7 +4,7 @@ import pageobjects.DashboardPage;
 import pageobjects.TicketsPage;
 import org.junit.jupiter.api.*;
 
-public class LoginTestChrome extends BaseUiTest{
+public class LoginTestChrome extends BaseUiTest {
 
     @Test
     public void testLogin() throws InterruptedException {

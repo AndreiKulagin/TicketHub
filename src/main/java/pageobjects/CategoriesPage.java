@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.HashMap;
 
-public class CategoriesPage extends BasePage{
+public class CategoriesPage extends BasePage {
 
     @FindBy(xpath = "//button[@id='create-new-ticket']")
     private WebElement createNewTicketButton;
@@ -31,7 +31,8 @@ public class CategoriesPage extends BasePage{
     public CategoriesPage(WebDriver driver) {
         super(driver);
     }
-    public HashMap<String,String> createNewCategory(String categoryName,String categoryColor){
+
+    public HashMap<String, String> createNewCategory(String categoryName, String categoryColor) {
         wait.until(ExpectedConditions.visibilityOf(createNewTicketButton));
         Actions actions = new Actions(driver);
         actions.moveToElement(categoriesMenu).perform();
@@ -43,9 +44,9 @@ public class CategoriesPage extends BasePage{
         categoryColorInput.click();
         categoryColorInput.sendKeys(categoryColor);
         categoryFormSubmit.click();
-        HashMap<String,String>categoryValues = new HashMap<>();
-        categoryValues.put("name",categoryName);
-        categoryValues.put("color",categoryColor);
+        HashMap<String, String> categoryValues = new HashMap<>();
+        categoryValues.put("name", categoryName);
+        categoryValues.put("color", categoryColor);
         return categoryValues;
     }
 }

@@ -27,15 +27,15 @@ public class DataBase {
         }
     }
 
-    public String executeQueryForString(String query) throws SQLException{
-        if(connection== null){
+    public String executeQueryForString(String query) throws SQLException {
+        if (connection == null) {
             System.out.println("Connection is not established");
             return null;
         }
-        try(PreparedStatement statment = connection.prepareStatement(query);
-            ResultSet resultSet = statment.executeQuery()){
+        try (PreparedStatement statment = connection.prepareStatement(query);
+             ResultSet resultSet = statment.executeQuery()) {
             StringBuilder result = new StringBuilder();
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 String fullName = resultSet.getString(1);
                 result.append(fullName).append("\n");
             }
@@ -43,22 +43,22 @@ public class DataBase {
         }
     }
 
-    public List<Map<String,String>> executeQueryForList(String sqlQuery) throws SQLException {
-        if(connection == null){
+    public List<Map<String, String>> executeQueryForList(String sqlQuery) throws SQLException {
+        if (connection == null) {
             System.out.println("Connection is not established");
             return null;
         }
-        try(Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery(sqlQuery)){
-            List<Map<String,String>> resultList = new ArrayList<>();
+        try (Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(sqlQuery)) {
+            List<Map<String, String>> resultList = new ArrayList<>();
             ResultSetMetaData metaData = resultSet.getMetaData();
             int columnCount = metaData.getColumnCount();
-            while (resultSet.next()){
-                Map<String,String > rowMap = new HashMap<>();
-                for(int i =1; i<= columnCount;i++){
+            while (resultSet.next()) {
+                Map<String, String> rowMap = new HashMap<>();
+                for (int i = 1; i <= columnCount; i++) {
                     String columnName = metaData.getColumnName(i);
                     String columnValue = resultSet.getString(i);
-                    rowMap.put(columnName,columnValue);
+                    rowMap.put(columnName, columnValue);
                 }
                 resultList.add(rowMap);
             }
