@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.Locale;
 import java.util.Properties;
+import java.util.logging.Logger;
 
 public class BaseUiTest {
 
@@ -24,6 +25,7 @@ public class BaseUiTest {
     private MainPage mainPage;
 
     private static final String OPERATION_SYSTEM = System.getProperty("os.name");
+    protected static final Logger logger = Logger.getLogger(BaseUiTest.class.getName());
 
     @BeforeAll
     public static void setUpClass() {

@@ -4,9 +4,8 @@ import model.Department;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
 
-public class DepartmentsPage {
+public class DepartmentsPage extends BasePage {
 
     private WebDriver driver;
 
@@ -44,26 +43,33 @@ public class DepartmentsPage {
     private WebElement cityInput;
 
     public DepartmentsPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+        super(driver);
     }
 
     public void createNewDepartment(Department department) {
+        logger.info("Creating a new department");
         departmentsMenu.click();
         newDepartmentButton.click();
+        logger.info("Entering department title: " + department.getTitle());
         inputTitle.click();
         inputTitle.sendKeys(department.getTitle());
         additionalInfoButton.click();
+        logger.info("Entering department phone: " + department.getPhone());
         phoneInput.click();
         phoneInput.sendKeys(department.getPhone());
+        logger.info("Entering department Skype: " + department.getSkype());
         skypeInput.click();
         skypeInput.sendKeys(department.getSkype());
+        logger.info("Entering department website: " + department.getWebsite());
         websiteInput.click();
         websiteInput.sendKeys(department.getWebsite());
+        logger.info("Entering department email: " + department.getEmail());
         emailInput.click();
         emailInput.sendKeys(department.getEmail());
+        logger.info("Entering department country: " + department.getCountry());
         countryInput.click();
         countryInput.sendKeys(department.getCountry());
+        logger.info("Entering department city: " + department.getCity());
         cityInput.click();
         cityInput.sendKeys(department.getCity());
         submitButton.click();

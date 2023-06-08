@@ -14,10 +14,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class CreateNewTicketCheckDB extends BaseUiTest {
     @Test
     public void testCreateNewTicketWithDB() throws InterruptedException, SQLException {
+        logger.info("Starting testCreateNewTicketWithDB");
         TicketsPage ticketsPage = new TicketsPage(driver);
         ticketsPage.createNewTicket("Borodina555", "RedBull", "Tania", "Managers", "YouTube", "OPEN");
         ticketsPage.findTicket("Borodina555");
+        logger.info("Fetching ticket information from the page");
         HashMap<String, String> ticketValues = ticketsPage.getAllInformationAboutTicket("OPEN", "Borodina555");
+        logger.info("Fetching ticket information from the database");
         DataBase database = new DataBase();
         List<Map<String, String>> TicketInformationQuery = database.executeQueryForList("SELECT t.title, t.description, t.priority, s.name AS stage, c.name AS category, CONCAT(con.first_name,' ',con.last_name) AS contact, com.name AS company\n" +
                 "FROM ticket t\n" +

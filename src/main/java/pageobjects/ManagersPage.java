@@ -45,17 +45,21 @@ public class ManagersPage extends BasePage {
     }
 
     public Map<String, String> findManager(Map<String, String> manager) throws InterruptedException {
+        logger.info("Finding manager: " + manager.get("first_name") + " " + manager.get("last_name"));
         wait.until((ExpectedConditions.visibilityOf(firstNameSearchInput)));
         firstNameSearchInput.click();
         String firstNameValue = manager.get("first_name");
+        logger.info("Entering first name: " + firstNameValue);
         firstNameSearchInput.sendKeys(firstNameValue);
         lastNameSearchInput.click();
         String lastNameValue = manager.get("last_name");
+        logger.info("Entering last name: " + lastNameValue);
         lastNameSearchInput.sendKeys(lastNameValue);
         searchManagerFilterButton.click();
         Thread.sleep(2000);
         wait.until(ExpectedConditions.elementToBeClickable(searchManagersResult));
         actions.moveToElement(searchManagersResult).perform();
+        logger.info("Clicking on manager result");
         searchManagersResult.click();
         wait.until(ExpectedConditions.visibilityOf(managerDetailsBackToListButton));
         String nameFieldValue = nameValue.getText();

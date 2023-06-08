@@ -45,15 +45,25 @@ public class ContactsPage extends BasePage {
     }
 
     public void findContact() {
+        logger.info("Finding contact");
         ContactsPage contactsPage = new ContactsPage(driver);
         contactsPage
                 .waitUntil(contactsMenu)
-                .clickButton(contactsMenu)
+                .clickButton(contactsMenu);
+        logger.info("Clicked on 'Contacts' menu");
+        contactsPage
                 .clickButton(searchFirstNameInput)
-                .fillInInput(searchFirstNameInput, "Andrei")
+                .fillInInput(searchFirstNameInput, "Andrei");
+        logger.info("Filled in search criteria: first name - Andrei");
+        contactsPage
                 .clickButton(searchLastNameInput)
-                .fillInInput(searchFirstNameInput, "Kul")
-                .clickButton(searchContactButton)
+                .fillInInput(searchFirstNameInput, "Kul");
+        logger.info("Filled in search criteria: last name - Kul");
+        contactsPage
+                .clickButton(searchContactButton);
+        logger.info("Clicked on 'Search' button");
+        contactsPage
                 .clickButton(searchContactResult);
+        logger.info("Clicked on search result");
     }
 }

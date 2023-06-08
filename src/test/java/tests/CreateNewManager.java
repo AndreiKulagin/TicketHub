@@ -10,7 +10,8 @@ import java.util.Map;
 public class CreateNewManager extends BaseUiTest {
 
     @Test
-    public void createNewManager() throws InterruptedException {
+    public void testCreateNewManager() throws InterruptedException {
+        logger.info("Starting testCreateNewManager");
         ManagersPage managersPage = new ManagersPage(driver);
         Manager manager = new Manager(driver);
         Map<String, String> generatedManager = manager.getManager("Andrei", "Grigoshvili");
@@ -20,5 +21,6 @@ public class CreateNewManager extends BaseUiTest {
         generatedManager.remove("First name");
         generatedManager.remove("Last name");
         Assertions.assertEquals(generatedManager, filedValues);
+        logger.info("Finished testCreateNewManager");
     }
 }
