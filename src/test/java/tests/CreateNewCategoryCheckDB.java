@@ -21,7 +21,7 @@ public class CreateNewCategoryCheckDB extends BaseUiTest {
         DataBase database = new DataBase();
         List<Map<String, String>> categoryInformationQuery = database.executeQueryForList("SELECT name, color FROM category\n" +
                 "WHERE name = 'Borovik1993';" + "\t\t");
-        logger.info("Fetched category information from the database:"+categoryInformationQuery);
+        logger.info("Fetched category information from the database:" + categoryInformationQuery);
         assertTrue(categoryValues.equals(categoryInformationQuery.get(0)));
     }
 }
