@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 public class BasePage {
 
@@ -19,6 +20,7 @@ public class BasePage {
     protected Map<String, String> manager;
     protected WebDriverWait wait;
     public static final Duration TIMEOUT = Duration.ofSeconds(10);
+    protected static final Logger logger = Logger.getLogger(BasePage.class.getName());
 
     public BasePage(WebDriver driver) {
         this.driver = driver;

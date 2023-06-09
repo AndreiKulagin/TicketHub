@@ -6,8 +6,10 @@ import pageobjects.ContactsPage;
 public class FindContact extends BaseUiTest {
 
     @Test
-    public void findContact() {
+    public void testFindContact() {
+        logger.info("Starting testFindContact");
         ContactsPage contactsPage = new ContactsPage(driver);
         contactsPage.findContact();
+        logger.info("Finished testFindContact");
     }
 }

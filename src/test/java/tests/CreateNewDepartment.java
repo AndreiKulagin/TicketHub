@@ -8,6 +8,7 @@ public class CreateNewDepartment extends BaseUiTest {
 
     @Test
     public void testCreateNewDepartment() {
+        logger.info("Starting testCreateNewDepartment");
         Department department = new Department.Builder()
                 .setTitle("Andrei Kulagin555")
                 .setPhone("1234567890")
@@ -18,5 +19,6 @@ public class CreateNewDepartment extends BaseUiTest {
                 .setCity("Wigan")
                 .build();
         new DepartmentsPage(driver).createNewDepartment(department);
+        logger.info("Finished testCreateNewDepartment");
     }
 }

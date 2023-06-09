@@ -57,33 +57,45 @@ public class CompaniesPage extends BasePage {
     }
 
     public void createNewCompany(String companyName) {
+        logger.info("Creating a new company");
         wait.until(ExpectedConditions.visibilityOf(createNewTicketButton));
         Actions actions = new Actions(driver);
         actions.moveToElement(companiesMenu).perform();
+        logger.info("Hovered over 'Companies' menu");
         companiesMenu.click();
         newCompanyButton.click();
+        logger.info("Clicked on 'New Company' button");
         wait.until(ExpectedConditions.visibilityOf(inputCompanyName));
         inputCompanyName.sendKeys(companyName);
+        logger.info("Entered company name: " + companyName);
         submitButton.click();
+        logger.info("Clicked on 'Submit' button");
         wait.until(ExpectedConditions.visibilityOf(newCompanyButton));
+        logger.info("New company created successfully");
     }
 
     public void findCompany(String companyName) throws InterruptedException {
+        logger.info("Finding company: " + companyName);
         wait.until(ExpectedConditions.visibilityOf(searchCompanySubmitButton));
         inputCompanyName.click();
         inputCompanyName.sendKeys(companyName);
         searchCompanySubmitButton.click();
         Thread.sleep(2000);
+        logger.info("Clicking on search result for company: " + companyName);
         getCompanySearchResult(companyName).click();
         wait.until(ExpectedConditions.visibilityOf(companyDetailsTab));
+        logger.info("Company details tab is visible for company: " + companyName);
     }
 
     public HashMap<String, String> getAllInformationAboutCompany() {
+        logger.info("Retrieving all information about the company");
         HashMap<String, String> companyValues = new HashMap<>();
         String companyName = companyNameInformation.getText();
         companyValues.put("name", companyName);
+        logger.info("Company name: " + companyName);
         String prefixInformation = ticketsPrefixInformation.getText();
         companyValues.put("ticket_prefix", prefixInformation);
+        logger.info("Ticket prefix information: " + prefixInformation);
         return companyValues;
     }
 }

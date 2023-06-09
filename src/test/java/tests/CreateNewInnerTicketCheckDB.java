@@ -14,10 +14,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class CreateNewInnerTicketCheckDB extends BaseUiTest {
     @Test
     public void testCreateNewInnerTicketWithDB() throws InterruptedException, SQLException {
+        logger.info("Starting testCreateNewInnerTicketWithDB");
         TicketsPage ticketsPage = new TicketsPage(driver);
         ticketsPage.createNewInnerTicket("ManchesterUnited", "MU", "Call Center", "Events");
         ticketsPage.findTicket("ManchesterUnited");
+        logger.info("Fetching ticket information from the page");
         HashMap<String, String> innerTicketValues = ticketsPage.getAllInformationAboutInnerTicket("IN PROGRESS", "ManchesterUnited");
+        logger.info("Fetching ticket information from the database");
         DataBase database = new DataBase();
         List<Map<String, String>> innerTicketInformationQuery = database.executeQueryForList("SELECT t.title, t.description, s.name AS stage, c.name AS category\n" +
                 "FROM ticket t\n" +

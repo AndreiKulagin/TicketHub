@@ -33,17 +33,23 @@ public class CategoriesPage extends BasePage {
     }
 
     public HashMap<String, String> createNewCategory(String categoryName, String categoryColor) {
+        logger.info("Creating a new category");
         wait.until(ExpectedConditions.visibilityOf(createNewTicketButton));
         Actions actions = new Actions(driver);
         actions.moveToElement(categoriesMenu).perform();
+        logger.info("Clicked on the categories menu");
         categoriesMenu.click();
+        logger.info("Clicked on the new category button");
         newCategoryButton.click();
         wait.until(ExpectedConditions.visibilityOf(categoryTitleInput));
         categoryTitleInput.sendKeys(categoryName);
+        logger.info("Entered category name: " + categoryName);
         wait.until(ExpectedConditions.visibilityOf(categoryColorInput));
         categoryColorInput.click();
         categoryColorInput.sendKeys(categoryColor);
+        logger.info("Entered category color: " + categoryColor);
         categoryFormSubmit.click();
+        logger.info("Submitted the category form");
         HashMap<String, String> categoryValues = new HashMap<>();
         categoryValues.put("name", categoryName);
         categoryValues.put("color", categoryColor);

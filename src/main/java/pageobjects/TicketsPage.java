@@ -138,6 +138,7 @@ public class TicketsPage extends BasePage {
     }
 
     public void createNewTicket(String titleName, String textareaName, String companyName, String departmentName, String categoryName, String stageOption) throws InterruptedException {
+        logger.info("Creating a new ticket");
         newTicketButton.click();
         inputTitle.sendKeys(titleName);
         textareaDescription.click();
@@ -159,6 +160,7 @@ public class TicketsPage extends BasePage {
     }
 
     public void createNewInnerTicket(String titleName, String descriptionArea, String departmentName, String categoryName) throws InterruptedException {
+        logger.info("Creating a new inner ticket");
         newTicketButton.click();
         wait.until(ExpectedConditions.visibilityOf(newInnerTicketButton));
         newInnerTicketButton.click();
@@ -174,6 +176,7 @@ public class TicketsPage extends BasePage {
     }
 
     public HashMap<String, String> getAllInformationAboutInnerTicket(String stageInformation, String title) {
+        logger.info("Retrieving all information about the inner ticket");
         HashMap<String, String> InnerTicketValues = new HashMap<>();
         String ticketDescription = ticketDescriptionValue.getText();
         InnerTicketValues.put("description", ticketDescription);
@@ -187,6 +190,7 @@ public class TicketsPage extends BasePage {
     }
 
     public void getAllIds(String columnTitle) {
+        logger.info("Retrieving all IDs");
         List<WebElement> headers = driver.findElements(By.xpath("//th"));
         int neededColumnNumber = 0;
         for (int i = 0; i < headers.size(); i++) {
@@ -202,6 +206,7 @@ public class TicketsPage extends BasePage {
     }
 
     public void getAllTitles(String columnTitle) {
+        logger.info("Retrieving all Titles");
         List<WebElement> headers = driver.findElements(By.xpath("//th"));
         int neededColumnNumber = 0;
         for (int i = 0; i < headers.size(); i++) {
@@ -217,6 +222,7 @@ public class TicketsPage extends BasePage {
     }
 
     public void getAllAssignees(String columnTitle) {
+        logger.info("Retrieving all Assignees");
         List<WebElement> headers = driver.findElements(By.xpath("//th"));
         int neededColumnNumber = 0;
         for (int i = 0; i < headers.size(); i++) {
@@ -232,6 +238,7 @@ public class TicketsPage extends BasePage {
     }
 
     public void getAllStages(String columnTitle) {
+        logger.info("Retrieving all Stages");
         List<WebElement> headers = driver.findElements(By.xpath("//th"));
         int neededColumnNumber = 0;
         for (int i = 0; i < headers.size(); i++) {
@@ -247,6 +254,7 @@ public class TicketsPage extends BasePage {
     }
 
     public void findTicket(String title) throws InterruptedException {
+        logger.info("Finding ticket: " + title);
         wait.until(ExpectedConditions.visibilityOf(newTicketButton));
         Thread.sleep(2000);
         alertCloseButton.click();
@@ -262,6 +270,7 @@ public class TicketsPage extends BasePage {
     }
 
     public HashMap<String, String> getAllInformationAboutTicket(String stageInformation, String title) {
+        logger.info("Retrieving all information about the ticket");
         HashMap<String, String> ticketValues = new HashMap<>();
         String ticketDescription = ticketDescriptionValue.getText();
         ticketValues.put("description", ticketDescription);
