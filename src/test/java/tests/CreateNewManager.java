@@ -14,12 +14,12 @@ public class CreateNewManager extends BaseUiTest {
         logger.info("Starting testCreateNewManager");
         ManagersPage managersPage = new ManagersPage(driver);
         Manager manager = new Manager(driver);
-        Map<String, String> generatedManager = manager.getManager("Andrei", "Grigoshvili");
+        Map<String, String> generatedManager = manager.getManager("Arnolds", "tWister");
         Map<String, String> filedValues = managersPage.findManager((generatedManager));
-        String combinedName = generatedManager.get("First name") + " " + generatedManager.get("Last name");
-        generatedManager.put("Name", combinedName);
-        generatedManager.remove("First name");
-        generatedManager.remove("Last name");
+        String combinedName = generatedManager.get("first_name") + " " + generatedManager.get("last_name");
+        generatedManager.put("name", combinedName);
+        generatedManager.remove("first_name");
+        generatedManager.remove("last_name");
         Assertions.assertEquals(generatedManager, filedValues);
         logger.info("Finished testCreateNewManager");
     }

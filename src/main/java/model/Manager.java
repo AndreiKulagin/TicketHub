@@ -89,7 +89,6 @@ public class Manager extends BasePage {
         emailInput.click();
         String generatedEmail = generateEmail();
         emailInput.sendKeys(generatedEmail);
-        manager.put("email", generatedEmail);
         departmentSelect.click();
         wait.until((ExpectedConditions.visibilityOf(departmentOptionDepoButton)));
         departmentOptionDepoButton.click();
