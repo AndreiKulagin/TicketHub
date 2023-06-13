@@ -16,6 +16,8 @@ import java.util.Locale;
 import java.util.Properties;
 import java.util.logging.Logger;
 
+import utils.ScreenshotUtils;
+
 public class BaseUiTest {
 
     protected WebDriver driver;
@@ -26,6 +28,7 @@ public class BaseUiTest {
 
     private static final String OPERATION_SYSTEM = System.getProperty("os.name");
     protected static final Logger logger = Logger.getLogger(BaseUiTest.class.getName());
+
 
     @BeforeAll
     public static void setUpClass() {
@@ -59,7 +62,8 @@ public class BaseUiTest {
     }
 
     @AfterEach
-    public void tearDown() {
+    public void takeScreenshotAndTearDown() throws IOException {
+        ScreenshotUtils.takeScreenshot(driver,"CreateNewCompanyCheckDB");
         driver.quit();
     }
 }
