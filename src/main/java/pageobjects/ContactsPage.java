@@ -7,6 +7,27 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ContactsPage extends BasePage {
 
+    @FindBy(xpath = "//input[@id = 'login']")
+    private WebElement loginInput;
+
+    @FindBy(xpath = "//input[@id = 'ticketPrefix']")
+    private WebElement ticketPrefixInput;
+
+    @FindBy(xpath = "//div[@class = 'alert alert-danger']")
+    private WebElement alertMessage;
+
+    @FindBy(xpath = "//input[@id = 'lastName']")
+    private WebElement lastNameInput;
+
+    @FindBy(xpath = "//input[@id = 'email']")
+    private WebElement emailInput;
+
+    @FindBy(xpath = "//input[@id = 'firstName']")
+    private WebElement firstNameInput;
+
+    @FindBy(xpath = "//button[@id='create-new-ticket']")
+    private WebElement newTicketButton;
+
     @FindBy(id = "menu-contacts")
     private WebElement contactsMenu;
 
@@ -65,5 +86,22 @@ public class ContactsPage extends BasePage {
         contactsPage
                 .clickButton(searchContactResult);
         logger.info("Clicked on search result");
+    }
+
+    public String createNewContact(String firstName, String email, String lastName, String login,String ticketPrefix) {
+        wait.until(ExpectedConditions.visibilityOf(newTicketButton));
+        actions.moveToElement(contactsMenu).perform();
+        contactsMenu.click();
+        wait.until(ExpectedConditions.visibilityOf(newContactButton));
+        newContactButton.click();
+        wait.until(ExpectedConditions.visibilityOf(firstNameInput));
+        firstNameInput.sendKeys(firstName);
+        emailInput.sendKeys(email);
+        lastNameInput.sendKeys(lastName);
+        loginInput.clear();
+        loginInput.sendKeys(login);
+        wait.until(ExpectedConditions.visibilityOf(ticketPrefixInput));
+        ticketPrefixInput.sendKeys(ticketPrefix);
+        return alertMessage.getText();
     }
 }
