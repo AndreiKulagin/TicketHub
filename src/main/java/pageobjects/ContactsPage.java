@@ -7,6 +7,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ContactsPage extends BasePage {
 
+    private String alertMessageValue;
+
     @FindBy(xpath = "//input[@id = 'login']")
     private WebElement loginInput;
 
@@ -88,7 +90,7 @@ public class ContactsPage extends BasePage {
         logger.info("Clicked on search result");
     }
 
-    public String createNewContact(String firstName, String email, String lastName, String login,String ticketPrefix) {
+    public void createNewContact(String firstName, String email, String lastName, String login, String ticketPrefix) {
         wait.until(ExpectedConditions.visibilityOf(newTicketButton));
         actions.moveToElement(contactsMenu).perform();
         contactsMenu.click();
@@ -102,6 +104,52 @@ public class ContactsPage extends BasePage {
         loginInput.sendKeys(login);
         wait.until(ExpectedConditions.visibilityOf(ticketPrefixInput));
         ticketPrefixInput.sendKeys(ticketPrefix);
-        return alertMessage.getText();
+    }
+
+    public String getAlertMessageValue() {
+        return alertMessageValue;
+    }
+
+    public void setTicketsEmail(String email) {
+        wait.until(ExpectedConditions.visibilityOf(newTicketButton));
+        actions.moveToElement(contactsMenu).perform();
+        contactsMenu.click();
+        newContactButton.click();
+        emailInput.sendKeys(email);
+        wait.until(ExpectedConditions.visibilityOf(alertMessage));
+        alertMessageValue = alertMessage.getText();
+    }
+
+    public void setTicketPrefix(String ticketPrefix) {
+        wait.until(ExpectedConditions.visibilityOf(newTicketButton));
+        actions.moveToElement(contactsMenu).perform();
+        contactsMenu.click();
+        newContactButton.click();
+        wait.until(ExpectedConditions.visibilityOf(ticketPrefixInput));
+        ticketPrefixInput.sendKeys(ticketPrefix);
+        wait.until(ExpectedConditions.visibilityOf(alertMessage));
+        alertMessageValue = alertMessage.getText();
+    }
+
+    public void setTicketLogin(String login) {
+        wait.until(ExpectedConditions.visibilityOf(newTicketButton));
+        actions.moveToElement(contactsMenu).perform();
+        contactsMenu.click();
+        newContactButton.click();
+        wait.until(ExpectedConditions.visibilityOf(loginInput));
+        loginInput.sendKeys(login);
+        wait.until(ExpectedConditions.visibilityOf(alertMessage));
+        alertMessageValue = alertMessage.getText();
+    }
+
+    public void setTicketLastName(String lastName) {
+        wait.until(ExpectedConditions.visibilityOf(newTicketButton));
+        actions.moveToElement(contactsMenu).perform();
+        contactsMenu.click();
+        newContactButton.click();
+        wait.until(ExpectedConditions.visibilityOf(loginInput));
+        lastNameInput.sendKeys(lastName);
+        wait.until(ExpectedConditions.visibilityOf(alertMessage));
+        alertMessageValue = alertMessage.getText();
     }
 }
