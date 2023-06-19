@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ScreenshotUtils {
-    private static final String FOLDER_PATH = "/Users/andreikulagin/IdeaProjects/aqa_project/src/test/java/tests/screenshots";
+    private static final String FOLDER_PATH = "src/test/java/tests/screenshots";
 
     public static void takeScreenshot(WebDriver driver, String screenshotName) throws IOException {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");

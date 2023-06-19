@@ -3,7 +3,7 @@ package tests;
 import org.junit.jupiter.api.Test;
 import pageobjects.ContactsPage;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class NegativeCreateNewContact extends BaseUiTest {
@@ -12,7 +12,7 @@ public class NegativeCreateNewContact extends BaseUiTest {
         ContactsPage contactsPage = new ContactsPage(driver);
         contactsPage.setTicketsEmail("abc");
         String actualAlertValue = contactsPage.getAlertMessageValue();
-        assertTrue(actualAlertValue.equals("Email must be valid"));
+        assertEquals("Email must be valid", actualAlertValue);
     }
 
     @Test
@@ -20,7 +20,7 @@ public class NegativeCreateNewContact extends BaseUiTest {
         ContactsPage contactsPage = new ContactsPage(driver);
         contactsPage.setTicketsEmail("");
         String actualAlertValue = contactsPage.getAlertMessageValue();
-        assertTrue(actualAlertValue.equals("Email is required\n" + "Email must be valid"));
+        assertEquals("Email is required\n" + "Email must be valid", actualAlertValue);
     }
 
     @Test
@@ -28,7 +28,7 @@ public class NegativeCreateNewContact extends BaseUiTest {
         ContactsPage contactsPage = new ContactsPage(driver);
         contactsPage.setTicketPrefix("k");
         String actualAlertValue = contactsPage.getAlertMessageValue();
-        assertTrue(actualAlertValue.equals("Tickets prefix must be from 3 to 6 characters long"));
+        assertEquals("Tickets prefix must be from 3 to 6 characters long",actualAlertValue);
     }
 
     @Test
@@ -36,7 +36,7 @@ public class NegativeCreateNewContact extends BaseUiTest {
         ContactsPage contactsPage = new ContactsPage(driver);
         contactsPage.setTicketLogin("ddd");
         String actualAlertValue = contactsPage.getAlertMessageValue();
-        assertTrue(actualAlertValue.equals("Login must be at least 4 characters long"));
+        assertEquals("Login must be at least 4 characters long", actualAlertValue);
     }
 
     @Test
@@ -44,6 +44,6 @@ public class NegativeCreateNewContact extends BaseUiTest {
         ContactsPage contactsPage = new ContactsPage(driver);
         contactsPage.setTicketLastName("K");
         String actualAlertValue = contactsPage.getAlertMessageValue();
-        assertTrue(actualAlertValue.equals("Last name must be at least 2 characters long."));
+        assertEquals("Last name must be at least 2 characters long.", actualAlertValue);
     }
 }
