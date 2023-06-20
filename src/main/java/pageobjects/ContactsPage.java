@@ -119,33 +119,27 @@ public class ContactsPage extends BasePage {
     }
 
     public String getAlertMessageValue() {
+        wait.until(ExpectedConditions.visibilityOf(alertMessage));
+        alertMessageValue = alertMessage.getText();
         return alertMessageValue;
     }
 
     public void setTicketsEmail(String email) {
         emailInput.sendKeys(email);
-        wait.until(ExpectedConditions.visibilityOf(alertMessage));
-        alertMessageValue = alertMessage.getText();
     }
 
     public void setTicketPrefix(String ticketPrefix) {
         wait.until(ExpectedConditions.visibilityOf(ticketPrefixInput));
         ticketPrefixInput.sendKeys(ticketPrefix);
-        wait.until(ExpectedConditions.visibilityOf(alertMessage));
-        alertMessageValue = alertMessage.getText();
     }
 
     public void setTicketLogin(String login) {
         wait.until(ExpectedConditions.visibilityOf(loginInput));
         loginInput.sendKeys(login);
-        wait.until(ExpectedConditions.visibilityOf(ticketPrefixInput));
-        alertMessageValue = alertMessage.getText();
     }
 
     public void setTicketLastName(String lastName) {
         wait.until(ExpectedConditions.visibilityOf(loginInput));
         lastNameInput.sendKeys(lastName);
-        wait.until(ExpectedConditions.visibilityOf(alertMessage));
-        alertMessageValue = alertMessage.getText();
     }
 }

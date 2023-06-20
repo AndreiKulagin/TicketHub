@@ -1,14 +1,12 @@
 package tests;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.*;
 import pageobjects.ContactsPage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class NegativeCreateNewContact extends BaseUiTest {
 
     @BeforeAll
@@ -24,6 +22,7 @@ public class NegativeCreateNewContact extends BaseUiTest {
         contactsPage.pressNewContactButton();
     }
     @Test
+    @Order(1)
     public void testEmailMustBeValidError() {
         ContactsPage contactsPage = new ContactsPage(driver);
         contactsPage.setTicketsEmail("abc");
@@ -32,6 +31,7 @@ public class NegativeCreateNewContact extends BaseUiTest {
     }
 
     @Test
+    @Order(2)
     public void testEmailIsRequiredError() {
         ContactsPage contactsPage = new ContactsPage(driver);
         contactsPage.setTicketsEmail("");
@@ -40,6 +40,7 @@ public class NegativeCreateNewContact extends BaseUiTest {
     }
 
     @Test
+    @Order(3)
     public void testInvalidTicketPrefix() {
         ContactsPage contactsPage = new ContactsPage(driver);
         contactsPage.setTicketPrefix("k");
@@ -48,6 +49,7 @@ public class NegativeCreateNewContact extends BaseUiTest {
     }
 
     @Test
+    @Order(4)
     public void testLoginLengthError() {
         ContactsPage contactsPage = new ContactsPage(driver);
         contactsPage.setTicketLogin("ddd");
@@ -56,6 +58,7 @@ public class NegativeCreateNewContact extends BaseUiTest {
     }
 
     @Test
+    @Order(5)
     public void testLastNameLengthError() {
         ContactsPage contactsPage = new ContactsPage(driver);
         contactsPage.setTicketLastName("K");
