@@ -19,12 +19,12 @@ public class CreateNewManagerCheckDB extends BaseUiTest {
         ManagersPage managersPage = new ManagersPage(driver);
         Manager manager = new Manager(driver);
         logger.info("Fetching manager information from the page");
-        Map<String, String> generatedManager = manager.getManager("Thetford", "Peckham");
+        Map<String, String> generatedManager = manager.getManager("Energy52", "contact");
         logger.info("Fetching manager information from the database");
         DataBase database = new DataBase();
         List<Map<String, String>> managerInformationQuery = database.executeQueryForList("SELECT CONCAT(first_name,' ',last_name) AS name, phone, skype\n" +
                 "FROM manager\n" +
-                "WHERE first_name = 'Thetford' AND last_name = 'Peckham';" + "\t\t");
+                "WHERE first_name = 'Energy52' AND last_name = 'contact';" + "\t\t");
         Map<String, String> filedValues = managersPage.findManager((generatedManager));
         assertTrue(filedValues.equals(managerInformationQuery.get(0)));
         logger.info("Finished testCreateNewManagerCheckDB");

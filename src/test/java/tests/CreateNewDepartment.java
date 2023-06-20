@@ -10,11 +10,11 @@ public class CreateNewDepartment extends BaseUiTest {
     public void testCreateNewDepartment() {
         logger.info("Starting testCreateNewDepartment");
         Department department = new Department.Builder()
-                .setTitle("Andrei Kulagin555")
-                .setPhone("1234567890")
+                .setTitle("Relation Television016")
+                .setPhone("1284167190")
                 .setSkype("new_department_skype")
                 .setWebsite("qa.com")
-                .setEmail("kullagin966@gmail.com")
+                .setEmail("kullagin976@gmail.com")
                 .setCountry("England")
                 .setCity("Wigan")
                 .build();

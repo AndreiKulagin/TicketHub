@@ -9,7 +9,7 @@ public class CreateNewTicket extends BaseUiTest {
     public void testCreateNewTicket() throws InterruptedException {
         logger.info("Starting testCreateNewTicket");
         TicketsPage ticketsPage = new TicketsPage(driver);
-        ticketsPage.createNewTicket("Samokat15", "RedBull", "Tania", "Managers", "YouTube", "OPEN");
+        ticketsPage.createNewTicket("story1297", "stor", "Tania", "Managers", "YouTube", "OPEN");
         logger.info("Finished testCreateNewTicket");
     }
 }

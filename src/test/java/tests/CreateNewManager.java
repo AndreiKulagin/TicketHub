@@ -14,7 +14,7 @@ public class CreateNewManager extends BaseUiTest {
         logger.info("Starting testCreateNewManager");
         ManagersPage managersPage = new ManagersPage(driver);
         Manager manager = new Manager(driver);
-        Map<String, String> generatedManager = manager.getManager("Arnolds", "tWister");
+        Map<String, String> generatedManager = manager.getManager("Result", "Magazine");
         Map<String, String> filedValues = managersPage.findManager((generatedManager));
         String combinedName = generatedManager.get("first_name") + " " + generatedManager.get("last_name");
         generatedManager.put("name", combinedName);
