@@ -1,12 +1,28 @@
 package tests;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import pageobjects.ContactsPage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class NegativeCreateNewContact extends BaseUiTest {
+
+    @BeforeAll
+    public static void openPage() {
+        ContactsPage contactsPage = new ContactsPage(driver);
+        contactsPage.openPage();
+    }
+
+    @AfterEach
+    public void resetForm() {
+        ContactsPage contactsPage = new ContactsPage(driver);
+        driver.navigate().back();
+        contactsPage.pressNewContactButton();
+    }
     @Test
     public void testEmailMustBeValidError() {
         ContactsPage contactsPage = new ContactsPage(driver);

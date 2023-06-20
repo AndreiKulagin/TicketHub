@@ -106,25 +106,29 @@ public class ContactsPage extends BasePage {
         ticketPrefixInput.sendKeys(ticketPrefix);
     }
 
+    public void openPage(){
+        wait.until(ExpectedConditions.visibilityOf(newTicketButton));
+        actions.moveToElement(contactsMenu).perform();
+        contactsMenu.click();
+        newContactButton.click();
+    }
+
+    public void pressNewContactButton(){
+        newContactButton.click();
+        wait.until(ExpectedConditions.visibilityOf(firstNameInput));
+    }
+
     public String getAlertMessageValue() {
         return alertMessageValue;
     }
 
     public void setTicketsEmail(String email) {
-        wait.until(ExpectedConditions.visibilityOf(newTicketButton));
-        actions.moveToElement(contactsMenu).perform();
-        contactsMenu.click();
-        newContactButton.click();
         emailInput.sendKeys(email);
         wait.until(ExpectedConditions.visibilityOf(alertMessage));
         alertMessageValue = alertMessage.getText();
     }
 
     public void setTicketPrefix(String ticketPrefix) {
-        wait.until(ExpectedConditions.visibilityOf(newTicketButton));
-        actions.moveToElement(contactsMenu).perform();
-        contactsMenu.click();
-        newContactButton.click();
         wait.until(ExpectedConditions.visibilityOf(ticketPrefixInput));
         ticketPrefixInput.sendKeys(ticketPrefix);
         wait.until(ExpectedConditions.visibilityOf(alertMessage));
@@ -132,21 +136,13 @@ public class ContactsPage extends BasePage {
     }
 
     public void setTicketLogin(String login) {
-        wait.until(ExpectedConditions.visibilityOf(newTicketButton));
-        actions.moveToElement(contactsMenu).perform();
-        contactsMenu.click();
-        newContactButton.click();
         wait.until(ExpectedConditions.visibilityOf(loginInput));
         loginInput.sendKeys(login);
-        wait.until(ExpectedConditions.visibilityOf(alertMessage));
+        wait.until(ExpectedConditions.visibilityOf(ticketPrefixInput));
         alertMessageValue = alertMessage.getText();
     }
 
     public void setTicketLastName(String lastName) {
-        wait.until(ExpectedConditions.visibilityOf(newTicketButton));
-        actions.moveToElement(contactsMenu).perform();
-        contactsMenu.click();
-        newContactButton.click();
         wait.until(ExpectedConditions.visibilityOf(loginInput));
         lastNameInput.sendKeys(lastName);
         wait.until(ExpectedConditions.visibilityOf(alertMessage));
