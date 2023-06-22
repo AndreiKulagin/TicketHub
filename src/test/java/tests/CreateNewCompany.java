@@ -9,8 +9,8 @@ public class CreateNewCompany extends BaseUiTest {
     public void testCreateNewCompany() throws InterruptedException {
         logger.info("Starting testCreateNewCompany");
         CompaniesPage companiesPage = new CompaniesPage(driver);
-        companiesPage.createNewCompany("Opel25");
-        companiesPage.findCompany("Opel25");
+        companiesPage.createNewCompany("Celtic1296");
+        companiesPage.findCompany("Celtic1296");
         logger.info("Finished testCreateNewCompany");
     }
 }

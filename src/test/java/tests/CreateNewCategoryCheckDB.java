@@ -16,11 +16,11 @@ public class CreateNewCategoryCheckDB extends BaseUiTest {
     public void testCreateNewCategoryCheckDB() throws SQLException {
         logger.info("Starting testCreateNewCategoryCheckDB");
         CategoriesPage categoriesPage = new CategoriesPage(driver);
-        HashMap<String, String> categoryValues = categoriesPage.createNewCategory("Borovik1993", "green");
+        HashMap<String, String> categoryValues = categoriesPage.createNewCategory("Blooming1", "green");
         logger.info("New category created:" + categoryValues);
         DataBase database = new DataBase();
         List<Map<String, String>> categoryInformationQuery = database.executeQueryForList("SELECT name, color FROM category\n" +
-                "WHERE name = 'Borovik1993';" + "\t\t");
+                "WHERE name = 'Blooming1';" + "\t\t");
         logger.info("Fetched category information from the database:" + categoryInformationQuery);
         assertTrue(categoryValues.equals(categoryInformationQuery.get(0)));
     }

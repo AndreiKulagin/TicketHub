@@ -16,10 +16,10 @@ public class CreateNewTicketCheckDB extends BaseUiTest {
     public void testCreateNewTicketWithDB() throws InterruptedException, SQLException {
         logger.info("Starting testCreateNewTicketWithDB");
         TicketsPage ticketsPage = new TicketsPage(driver);
-        ticketsPage.createNewTicket("Borodina555", "RedBull", "Tania", "Managers", "YouTube", "OPEN");
-        ticketsPage.findTicket("Borodina555");
+        ticketsPage.createNewTicket("breakfast7420", "break", "Tania", "Managers", "YouTube", "OPEN");
+        ticketsPage.findTicket("breakfast7420");
         logger.info("Fetching ticket information from the page");
-        HashMap<String, String> ticketValues = ticketsPage.getAllInformationAboutTicket("OPEN", "Borodina555");
+        HashMap<String, String> ticketValues = ticketsPage.getAllInformationAboutTicket("OPEN", "breakfast7420");
         logger.info("Fetching ticket information from the database");
         DataBase database = new DataBase();
         List<Map<String, String>> TicketInformationQuery = database.executeQueryForList("SELECT t.title, t.description, t.priority, s.name AS stage, c.name AS category, CONCAT(con.first_name,' ',con.last_name) AS contact, com.name AS company\n" +
@@ -28,7 +28,7 @@ public class CreateNewTicketCheckDB extends BaseUiTest {
                 "JOIN category c ON t.category_id=c.id\n" +
                 "JOIN contact con ON t.contact_id=con.id\n" +
                 "JOIN company com ON t.company_ticket_id = com.max_ticket_id\n" +
-                "WHERE t.title = 'Borodina555';" + "\t\t");
+                "WHERE t.title = 'breakfast7420';" + "\t\t");
         assertTrue(ticketValues.equals(TicketInformationQuery.get(0)));
     }
 }
