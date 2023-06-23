@@ -9,7 +9,7 @@ public class FindContact extends BaseUiTest {
     public void testFindContact() {
         logger.info("Starting testFindContact");
         ContactsPage contactsPage = new ContactsPage(driver);
-        contactsPage.findContact();
+        contactsPage.findContact("Arnold", "Arnold");
         logger.info("Finished testFindContact");
     }
 }

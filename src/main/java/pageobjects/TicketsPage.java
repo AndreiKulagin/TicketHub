@@ -11,6 +11,9 @@ import java.util.List;
 
 public class TicketsPage extends BasePage {
 
+    @FindBy(xpath = "//button[@id = 'edit-1']")
+    private WebElement ticketEditButton;
+
     @FindBy(xpath = "//button[@id = 'new-inner-ticket']")
     private WebElement newInnerTicketButton;
 
@@ -59,8 +62,8 @@ public class TicketsPage extends BasePage {
     @FindBy(xpath = "//button[@class = 'close']")
     private WebElement alertCloseButton;
 
-    @FindBy(xpath = "//button[@id='create-new-ticket']")
-    private WebElement newTicketButton;
+        @FindBy(xpath = "//button[@id='create-new-ticket']")
+        private WebElement newTicketButton;
 
     @FindBy(xpath = "//input[@id='title']")
     private WebElement inputTitle;
@@ -267,6 +270,15 @@ public class TicketsPage extends BasePage {
         Thread.sleep(2000);
         getTicketsSearchResult(title).click();
         Thread.sleep(2000);
+    }
+
+    public void editTicket(String newTitle, String newDescription){
+        ticketEditButton.click();
+        inputTitle.clear();
+        inputTitle.sendKeys(newTitle);
+        textareaDescription.clear();
+        textareaDescription.sendKeys(newDescription);
+        submitButton.click();
     }
 
     public HashMap<String, String> getAllInformationAboutTicket(String stageInformation, String title) {
