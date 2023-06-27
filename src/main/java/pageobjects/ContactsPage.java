@@ -1,13 +1,25 @@
 package pageobjects;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.HashMap;
+
 public class ContactsPage extends BasePage {
 
     private String alertMessageValue;
+
+    @FindBy(xpath = "//a[@id='delete-btn']")
+    private WebElement contactDeleteButton;
+
+    @FindBy(xpath = "//button[@id ='contact-form-submit']")
+    private WebElement contactSubmitButton;
+
+    @FindBy(xpath = "//a[@id = 'edit-btn']")
+    private WebElement contactEditButton;
 
     @FindBy(xpath = "//input[@id = 'login']")
     private WebElement loginInput;
@@ -53,6 +65,7 @@ public class ContactsPage extends BasePage {
     }
 
     public ContactsPage clickButton(WebElement buttonName) {
+        waitUntil(contactsMenu);
         buttonName.click();
         return this;
     }
@@ -67,27 +80,43 @@ public class ContactsPage extends BasePage {
         return this;
     }
 
-    public void findContact() {
+    public void findContact(String firstName, String lastName) {
         logger.info("Finding contact");
         ContactsPage contactsPage = new ContactsPage(driver);
         contactsPage
-                .waitUntil(contactsMenu)
                 .clickButton(contactsMenu);
         logger.info("Clicked on 'Contacts' menu");
         contactsPage
-                .clickButton(searchFirstNameInput)
-                .fillInInput(searchFirstNameInput, "Andrei");
-        logger.info("Filled in search criteria: first name - Andrei");
+                .fillInInput(searchFirstNameInput, firstName);
+        logger.info("Filled in search criteria: first name -" + firstName);
         contactsPage
                 .clickButton(searchLastNameInput)
-                .fillInInput(searchFirstNameInput, "Kul");
-        logger.info("Filled in search criteria: last name - Kul");
+                .fillInInput(searchLastNameInput, lastName);
+        logger.info("Filled in search criteria: last name -" + lastName);
         contactsPage
                 .clickButton(searchContactButton);
         logger.info("Clicked on 'Search' button");
-        contactsPage
-                .clickButton(searchContactResult);
-        logger.info("Clicked on search result");
+    }
+
+    public void deleteContact(){
+       contactDeleteButton.click();
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+    }
+
+    public HashMap<String, String> editContact(String contactNewFirstName, String contactNewLastname) {
+        HashMap<String,String> firstNameLastNameValues = new HashMap<>();
+        firstNameLastNameValues.put("first_name",contactNewFirstName);
+        firstNameLastNameValues.put("last_name",contactNewLastname);
+        contactEditButton.click();
+        wait.until(ExpectedConditions.visibilityOf(firstNameInput));
+        firstNameInput.clear();
+        firstNameInput.sendKeys(contactNewFirstName);
+        lastNameInput.clear();
+        lastNameInput.sendKeys(contactNewLastname);
+        actions.moveToElement(contactSubmitButton);
+        contactSubmitButton.click();
+        return firstNameLastNameValues;
     }
 
     public void createNewContact(String firstName, String email, String lastName, String login, String ticketPrefix) {
@@ -104,16 +133,17 @@ public class ContactsPage extends BasePage {
         loginInput.sendKeys(login);
         wait.until(ExpectedConditions.visibilityOf(ticketPrefixInput));
         ticketPrefixInput.sendKeys(ticketPrefix);
+        contactSubmitButton.click();
     }
 
-    public void openPage(){
+    public void openPage() {
         wait.until(ExpectedConditions.visibilityOf(newTicketButton));
         actions.moveToElement(contactsMenu).perform();
         contactsMenu.click();
         newContactButton.click();
     }
 
-    public void pressNewContactButton(){
+    public void pressNewContactButton() {
         newContactButton.click();
         wait.until(ExpectedConditions.visibilityOf(firstNameInput));
     }
