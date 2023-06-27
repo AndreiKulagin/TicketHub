@@ -6,6 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.HashMap;
+
 public class ContactsPage extends BasePage {
 
     private String alertMessageValue;
@@ -63,6 +65,7 @@ public class ContactsPage extends BasePage {
     }
 
     public ContactsPage clickButton(WebElement buttonName) {
+        waitUntil(contactsMenu);
         buttonName.click();
         return this;
     }
@@ -81,7 +84,6 @@ public class ContactsPage extends BasePage {
         logger.info("Finding contact");
         ContactsPage contactsPage = new ContactsPage(driver);
         contactsPage
-                .waitUntil(contactsMenu)
                 .clickButton(contactsMenu);
         logger.info("Clicked on 'Contacts' menu");
         contactsPage
@@ -102,7 +104,10 @@ public class ContactsPage extends BasePage {
         alert.accept();
     }
 
-    public void editContact(String contactNewFirstName, String contactNewLastname) {
+    public HashMap<String, String> editContact(String contactNewFirstName, String contactNewLastname) {
+        HashMap<String,String> firstNameLastNameValues = new HashMap<>();
+        firstNameLastNameValues.put("first_name",contactNewFirstName);
+        firstNameLastNameValues.put("last_name",contactNewLastname);
         contactEditButton.click();
         wait.until(ExpectedConditions.visibilityOf(firstNameInput));
         firstNameInput.clear();
@@ -111,6 +116,7 @@ public class ContactsPage extends BasePage {
         lastNameInput.sendKeys(contactNewLastname);
         actions.moveToElement(contactSubmitButton);
         contactSubmitButton.click();
+        return firstNameLastNameValues;
     }
 
     public void createNewContact(String firstName, String email, String lastName, String login, String ticketPrefix) {

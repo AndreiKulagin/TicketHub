@@ -272,13 +272,16 @@ public class TicketsPage extends BasePage {
         Thread.sleep(2000);
     }
 
-    public void editTicket(String newTitle, String newDescription){
+    public HashMap<String,String> editTicket(String newTitle, String newDescription){
+        HashMap<String,String> ticketTitleValue = new HashMap<>();
+        ticketTitleValue.put("title",newTitle);
         ticketEditButton.click();
         inputTitle.clear();
         inputTitle.sendKeys(newTitle);
         textareaDescription.clear();
         textareaDescription.sendKeys(newDescription);
         submitButton.click();
+        return ticketTitleValue;
     }
 
     public HashMap<String, String> getAllInformationAboutTicket(String stageInformation, String title) {
