@@ -1,23 +1,23 @@
 package tests;
-
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import pageobjects.MainPage;
+import utils.ScreenshotUtils;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.Properties;
 import java.util.logging.Logger;
-
-import utils.ScreenshotUtils;
 
 public class BaseUiTest {
 
@@ -31,7 +31,7 @@ public class BaseUiTest {
     protected static final Logger logger = Logger.getLogger(BaseUiTest.class.getName());
 
     @BeforeAll
-    public static void setUpClass() throws IOException {
+    public static void setUpClass() throws IOException, MalformedURLException {
         String driverDir = System.getProperty("user.home").replaceAll("\\\\", "/") + "/.m2/repository/webdriver/chrome/";
         if (OPERATION_SYSTEM.toLowerCase(Locale.ROOT).contains("windows")) {
             System.setProperty("webdriver.chrome.driver", driverDir + "chromedriver.exe");
@@ -42,7 +42,20 @@ public class BaseUiTest {
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
-        driver = new ChromeDriver(options);
+        options.setCapability("selenoid:options", new HashMap<String, Object>() {{
+            put("name", "Test badge...");
+            put("sessionTimeout", "15m");
+            put("env", new ArrayList<String>() {{
+                add("TZ=UTC");
+            }});
+            put("labels", new HashMap<String, Object>() {{
+                put("manual", "true");
+            }});
+            put("enableVideo", true);
+        }});
+
+        String selenoidUrl = "http://192.168.0.113:4444";
+        driver = new RemoteWebDriver(new URL(selenoidUrl), options);
 
         Properties props = new Properties();
         FileInputStream input = new FileInputStream("src/test/resources/login.properties");
@@ -63,7 +76,7 @@ public class BaseUiTest {
 
     @AfterAll
     public static void takeScreenshotAndTearDown() throws IOException {
-        ScreenshotUtils.takeScreenshot(driver,"CreateNewCompanyCheckDB");
+        ScreenshotUtils.takeScreenshot(driver, "CreateNewCompanyCheckDB");
         driver.quit();
     }
 }
